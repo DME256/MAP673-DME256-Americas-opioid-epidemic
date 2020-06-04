@@ -19,7 +19,7 @@
   }).addTo(map);
 
   // use omnivore to load the CSV data
-  omnivore.csv('data/opiod_deaths_nyr.csv')
+  omnivore.csv('data/opioid_deaths.csv')
     .on('ready', function (e) {
       drawMap(e.target.toGeoJSON());
       drawLegend(e.target.toGeoJSON()); // add this statement
@@ -43,13 +43,12 @@
     }
 
     // create 4 separate layers from GeoJSON data
-    const yearLayer = L.geoJson(data, options).addTo(map),
-      nsLayer = L.geoJson(data, options).addTo(map),
+    const nsLayer = L.geoJson(data, options).addTo(map),
       soLayer = L.geoJson(data, options).addTo(map),
       meLayer = L.geoJson(data, options).addTo(map),
       heLayer = L.geoJson(data, options).addTo(map);
     // fit the bounds of the map to one of the layers
-    map.fitBounds(yearLayer.getBounds());
+    map.fitBounds(nsLayer.getBounds());
 
     // adjust zoom level of map
     map.setZoom(map.getZoom() - .4);
@@ -149,7 +148,7 @@
       .on('input', function () {
 
         // current value of slider is current grade level
-        var currentGrade = this.value;
+        var currentYear = this.value;
 
         // resize the circles with updated grade level
         resizeCircles(nsLayer, soLayer, meLayer, heLayer, currentYear);
