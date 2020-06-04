@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset=utf-8 />
+  <title>2014 Kenyan Education Gender Equity</title>
+  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+
+  <link href="https://api.mapbox.com/mapbox-assembly/v0.24.0/assembly.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
+  <link href='https://fonts.googleapis.com/css?family=Work+Sans:400,500,600' rel='stylesheet' type='text/css'>
+  <link href='css/styles.css' rel='stylesheet' />
+</head>
+
+<body>
+  <div class='flex-parent viewport-full relative scroll-hidden'>
+    <div class='flex-child w-full w300-ml absolute static-ml left bottom'>
+      <div class='flex-parent flex-parent--column viewport-third h-full-ml hmax-full bg-white py18 px12'>
+        <div class='flex-child flex-child--grow px12 py12 scroll-auto'>
+          <!-- <img class="max-image-width" src="graphics/255px-Flag_of_Kenya.svg.png" title="Kenya Flag " height="120" -->
+            <!-- width="180"> -->
+          <h1 class='txt-h1 mb6'>America's Opioid Epidemic</h1>
+          <p>The map displays .</p>
+            <!-- <img class="max-image-width" src="graphics/kenyan_students.jpeg" title="Kenya students " height="150" -->
+            <!-- width="280"> -->
+          <h2 class='txt-xl mt18 mb12'>Map Info</h2>
+          <p>The data comes CDC and KFF</p>
+          <a class='link' href="https://">CDC.GOV</a>
+        </div>
+        <footer class='px12 py12 bg-gray-faint txt-s'>
+          <ul>
+            <li>Explore the raw
+              <a class='link' href='data/opiod_deaths.csv'>data</a>
+            </li>
+            <li>Map authored by
+              <a class='link' href="https://github.com/dme256">Dave Metzgar</a>
+            <li>Follow me on Twitter:
+              <a class='link' href="https://twitter.com/dave_metzgar">@dave_metzgar</a>
+            </li>
+          </ul>
+        </footer>
+      </div>
+    </div>
+    <div class='flex-child flex-child--grow viewport-twothirds viewport-full-ml'>
+      <div id="map" class='viewport-twothirds viewport-full-ml'></div>
+    </div>
+  </div>
+
+  <!-- year -->
+    <div id='currentYear' class='pt6 px12 bg-white border border--gray-light round'>
+          <p class='txt-bold'>Year: <span>1</span></p>
+      </div>
+
+  <!-- ui slider -->
+  <div id='slider' class='range w240 bg-white round-ml px12'>
+    <input type='range' min="2006" , max="2018" , value="1" , step="1" />
+  </div>
+
+  <!-- legend -->
+  <div id='legend' class='bg-white round px12 py12 relative'>
+    <!--
+      Wrap legend in div that doesn't display when the screen width <= 800px
+      Displays as a block when >= 800px
+     -->
+     <div class='none block-ml'>
+      <h3 class='txt-bold mb12 w180'>Number of <span class="NS">Natural RX</span> and <span class="SO">Synthetic RX</span> and 
+        <span class="ME">Methadone</span> and <span class="HE">Heroin</span>
+        deaths by opioid type</h3>
+
+      <div class='legend-circles relative w180'>
+        <div class="legend-large border border--gray-light absolute"></div>
+        <div class="legend-small border border--gray-light absolute"></div>
+        <div class="legend-large-label txt-m absolute"></div>
+        <div class="legend-small-label txt-m absolute"></div>
+      </div>
+    </div>
+    <!--
+      Add a button that doesn't display when the screen width >=800px
+      When it does display, show it at the bottom right of the parent div
+      Need to attach event listener on button in JS to do something on click
+    -->
+    <button class='none-ml bg-white round absolute right bottom'>
+      <!--
+        Add a SVG icon with height, width, color, and position it with negative bottom margin
+        https://labs.mapbox.com/assembly/documentation/#Icons
+      -->
+      <svg class='icon h36 w36 girls mb-neg24'>
+        <!-- Select the icon shape -->
+        <use xlink:href=#icon-circle></use>
+      </svg>
+      <!-- Add a second SVG icon with height, width, and color -->
+      <svg class='icon h24 w24 boys'>
+        <!-- Select the icon shape -->
+        <use xlink:href=#icon-circle></use>
+      </svg>
+    </button>
+  </div>
+
+  <!-- info -->
+  <div id='info' class='py6 px12 bg-white border border--gray-light round fixed w240'>
+    <p>County: <span></span></p>
+    <p class='girls'>girls <span></span>: <span class='txt-l txt-bold'></span></p>
+    <p class='boys'>boys <span></span>: <span class='txt-l txt-bold'></span></p>
+
+  <!-- Additional elements added here for this step! -->
+  <hr class='txt-hr'>
+  <p class='my6'>trend: years 2006 &ndash; 2018</p>
+  <p class='mb6'><span class='girlspark'></span></p>
+  <p><span class='boyspark'></span></p>
+  </div>
+
+  <script async defer src="https://api.mapbox.com/mapbox-assembly/v0.24.0/assembly.js"></script>
+  <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+  <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-omnivore/v0.3.1/leaflet-omnivore.min.js'></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-sparklines/2.1.2/jquery.sparkline.min.js"></script>
+  <script src='js/app.js'></script>
+
+</body>
+
+</html>

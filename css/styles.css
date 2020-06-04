@@ -1,0 +1,76 @@
+/* custom CSS rules */
+
+/* display none for layout but be careful of license restrictions */
+.mapbox-logo, .leaflet-control-attribution {
+  display: none; 
+
+}
+
+.legend-large, .legend-small {
+  border-radius: 50%;
+}
+
+hr.small, hr.large {
+  width: 83px;
+  position: absolute;
+  top: -8px;
+  left: 55px;
+  border: 1px dashed #ccc;     /* overwrite assembly.css rule */
+  margin-top: 8px;            /* overwrite assembly.css rule */
+}
+
+body {
+  font-family: "Work Sans", sans-serif;
+}
+
+.boys {
+  color: #6E77B0;
+}
+
+.girls {
+  color: #D96D02;
+}
+
+h1 {
+  color: orange;
+  font-family: 'Work Sans',sans-serif;
+}
+
+h2 {
+color: orange;
+  font-family: 'Work Sans',sans-serif;
+}
+
+#map {
+           background: #448ee4;
+         }
+
+.marker {
+  height: 25px;
+  float: left;
+  margin: 0 10px;
+}
+
+#ui-controls {
+  width: 176px;
+  padding: 8px 25px 8px 15px;
+  background: rgba(75, 75, 75, 0.8);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  border-style: solid;
+  border-width: medium;
+  color: whitesmoke;
+}
+
+#ui-controls .min {
+  float: left;
+}
+
+#ui-controls .max {
+  float: right;
+  margin-right: -15px;
+}
+
+#info {
+  z-index: 1000;
+}
