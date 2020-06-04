@@ -97,11 +97,11 @@
       layer.setRadius(radius);
     });
 
-    // update the hover window with current grade's
+    // update the hover window with current year
     retrieveInfo(soLayer, currentYear);
 
     // good solution for lab
-    // update grade legend
+    // update year legend
     updateGrade(currentYear);
 
   } // end resizeCircles()
@@ -126,12 +126,12 @@
     // add UI control to map
     sliderControl.addTo(map);
 
-    // create Leaflet control for the grade legend
-    const gradeControl = L.control({
+    // create Leaflet control for the year legend
+    const yearControl = L.control({
       position: 'bottomleft'
     });
 
-    gradeControl.onAdd = function (map) {
+    yearControl.onAdd = function (map) {
 
       const controls = L.DomUtil.get("year");
 
@@ -142,7 +142,7 @@
     }
 
     // add grade legend to map
-    gradeControl.addTo(map);
+    yearControl.addTo(map);
 
     //select the slider's input and listen for change
     $('#slider input[type=range]')
