@@ -106,7 +106,7 @@
 
   } // end resizeCircles()
 
-  function sequenceUI(nsLayer, soLayer, melayer, heLayer) {
+  function sequenceUI(nsLayer, soLayer, meLayer, heLayer) {
 
     // create Leaflet control for the slider
     const sliderControl = L.control({
@@ -152,7 +152,7 @@
         var currentGrade = this.value;
 
         // resize the circles with updated grade level
-        resizeCircles(nsLayer, soLayer, melayer, heLayer, currentYear);
+        resizeCircles(nsLayer, soLayer, meLayer, heLayer, currentYear);
 
       });
   } // end sequenceUI()
@@ -259,7 +259,7 @@
 
   } // end drawLegend()
 
-  function retrieveInfo(nsLayer, soLayer, melayer, heLayer, currentYear) {
+  function retrieveInfo(nsLayer, soLayer, meLayer, heLayer, currentYear) {
 
     // select the element and reference with variable
     // and hide it from view initially
@@ -294,7 +294,7 @@
       const nsValues = [],
         soValues = [],
         meValues = [],
-        seValues = [];
+        heValues = [];
 
       // loop through the grade levels and push values into those arrays
       for (let i = 6; i <= 18; i++) {
