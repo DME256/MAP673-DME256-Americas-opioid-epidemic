@@ -19,7 +19,7 @@
   }).addTo(map);
 
   // use omnivore to load the CSV data
-  omnivore.csv('data/opioid_deaths.csv')
+  omnivore.csv('data/opioid_deaths_new.csv')
     .on('ready', function (e) {
       drawMap(e.target.toGeoJSON());
       drawLegend(e.target.toGeoJSON()); // add this statement
@@ -43,30 +43,30 @@
     }
 
     // create 4 separate layers from GeoJSON data
-    const nsLayer = L.geoJson(data, options).addTo(map),
-      soLayer = L.geoJson(data, options).addTo(map),
-      meLayer = L.geoJson(data, options).addTo(map),
-      heLayer = L.geoJson(data, options).addTo(map);
+    const naturalLayer = L.geoJson(data, options).addTo(map),
+      syntheticLayer = L.geoJson(data, options).addTo(map),
+      methadoneLayer = L.geoJson(data, options).addTo(map),
+      heroinLayer = L.geoJson(data, options).addTo(map);
     // fit the bounds of the map to one of the layers
-    map.fitBounds(nsLayer.getBounds());
+    map.fitBounds(naturalLayer.getBounds());
 
     // adjust zoom level of map
     map.setZoom(map.getZoom() - .4);
 
-    nsLayer.setStyle({
+    naturalLayer.setStyle({
       color: '#D96D02',
     });
-    soLayer.setStyle({
+    syntheticLayer.setStyle({
       color: '#6E77B0',
     });
-    meLayer.setStyle({
+    methadoneLayer.setStyle({
       color: '#E34A33',
     });
-    heLayer.setStyle({
+    heroinLayer.setStyle({
       color: '#B30000',
     });
-    resizeCircles(nsLayer, soLayer, meLayer, heLayer, 1);
-    sequenceUI(nsLayer, soLayer, meLayer, heLayer);
+    resizeCircles(naturalLayer, syntheticLayer, methadoneLayer, heroinLayer, 3);
+    sequenceUI(naturalLayer, syntheticLayer, methadoneLayer, heroinLayer);
 
   } // end drawMap()
 
@@ -77,27 +77,27 @@
 
   } // end calcRadius()
 
-  function resizeCircles(nsLayer, soLayer, meLayer, heLayer, currentYear) {
+  function resizeCircles(naturalLayer, syntheticLayer, methadoneLayer, heroinLayer, currentYear) {
 
-    nsLayer.eachLayer(function (layer) {
+    naturalLayer.eachLayer(function (layer) {
       var radius = calcRadius(Number(layer.feature.properties['NS' + currentYear]));
       layer.setRadius(radius);
     });
-    soLayer.eachLayer(function (layer) {
+    syntheticLayer.eachLayer(function (layer) {
       var radius = calcRadius(Number(layer.feature.properties['SO' + currentYear]));
       layer.setRadius(radius);
     });
-    meLayer.eachLayer(function (layer) {
+    methadoneLayer.eachLayer(function (layer) {
       var radius = calcRadius(Number(layer.feature.properties['ME' + currentYear]));
       layer.setRadius(radius);
     });
-    soLayer.eachLayer(function (layer) {
+    syntheticLayer.eachLayer(function (layer) {
       var radius = calcRadius(Number(layer.feature.properties['HE' + currentYear]));
       layer.setRadius(radius);
     });
 
     // update the hover window with current year
-    retrieveInfo(soLayer, currentYear);
+    retrieveInfo(syntheticLayer, currentYear);
 
     // good solution for lab
     // update year legend
@@ -105,7 +105,7 @@
 
   } // end resizeCircles()
 
-  function sequenceUI(nsLayer, soLayer, meLayer, heLayer) {
+  function sequenceUI(naturalLayer, syntheticLayer, methadoneLayer, heroinLayer) {
 
     // create Leaflet control for the slider
     const sliderControl = L.control({
@@ -151,7 +151,7 @@
         var currentYear = this.value;
 
         // resize the circles with updated grade level
-        resizeCircles(nsLayer, soLayer, meLayer, heLayer, currentYear);
+        resizeCircles(naturalLayer, syntheticLayer, methadoneLayer, heroinLayer, currentYear);
 
       });
   } // end sequenceUI()
@@ -258,14 +258,14 @@
 
   } // end drawLegend()
 
-  function retrieveInfo(nsLayer, soLayer, meLayer, heLayer, currentYear) {
+  function retrieveInfo(naturalLayer, syntheticLayer, methadoneLayer, heroinLayer, currentYear) {
 
     // select the element and reference with variable
     // and hide it from view initially
     const info = $('#info').hide();
 
-    // since soLayer is on top, use to detect mouseover events
-    soLayer.on('mouseover', function (e) {
+    // since syntheticLayer is on top, use to detect mouseover events
+    syntheticLayer.on('mouseover', function (e) {
 
       // remove the none class to display and show
       info.show();
@@ -275,12 +275,12 @@
 
       // populate HTML elements with relevant info
       $('#info span').html(props.STATE);
-      $(".ns span:first-natural-opoid").html('(NS ' + currentYear + ')');
+      $(".ns span:first-naturalLayer-opoid").html('(NS ' + currentYear + ')');
       $(".so span:first-synthetic-opioid").html('(SO ' + currentYear + ')');
       $(".so span:first-methadone-opioid").html('(ME ' + currentYear + ')');
       $(".so span:first-heroin-opioid").html('(HE ' + currentYear + ')');
 
-      $(".ns span:last-natural-opoid").html(Number(props['NS' + currentYear]).toLocaleString());
+      $(".ns span:last-naturalLayer-opoid").html(Number(props['NS' + currentYear]).toLocaleString());
       $(".so span:last-synthetic-opiod").html(Number(props['SO' + currentYear]).toLocaleString());
       $(".so span:last-methadone-opioid").html(Number(props['ME' + currentYear]).toLocaleString());
       $(".so span:last-heroin-opioid").html(Number(props['HE' + currentYear]).toLocaleString());
@@ -339,7 +339,7 @@
     });
 
     // hide the info panel when mousing off layergroup and remove affordance opacity
-    nsLayer.on('mouseout', function (e) {
+    naturalLayer.on('mouseout', function (e) {
 
       // hide the info panel
       info.hide();
