@@ -188,9 +188,11 @@
     data.features.forEach(function (state) {
       console.log(data)
       // for each year in a state
-      for (let opiodType in states.properties) {
+      // use correct variable name
+      for (let opiodType in state.properties) {
         // shorthand to each value
-        const value = states.properties[opiodType];
+        // use correct variable name
+        const value = state.properties[opiodType];
         // if the value can be converted to a number 
         // the + operator in front of a number returns a number
         if (+value) {
