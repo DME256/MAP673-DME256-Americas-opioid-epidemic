@@ -23,13 +23,22 @@ body {
   font-family: "Work Sans", sans-serif;
 }
 
-.boys {
-  color: #6E77B0;
+.Natural {
+  color:#D96D02;
 }
 
-.girls {
-  color: #D96D02;
-}
+.Synthetic {
+  color: #6E77B0;
+  }
+
+ .methadone {
+    color:#FFFF00  ;
+  }
+ .methadone {
+      color: #B30000;
+  }   
+  
+
 
 h1 {
   color: orange;

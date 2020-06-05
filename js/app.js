@@ -5,7 +5,7 @@
     center: [-39.82, 98.57],
     zoom: 5,
     minZoom: 1,
-    maxZoom: 20,
+    maxZoom: 10,
     // maxBounds: L.latLngBounds([-6.22, 27.72], [5.76, 47.83])
   });
 
@@ -19,15 +19,15 @@
   }).addTo(map);
 
   // use omnivore to load the CSV data
-  omnivore.csv('data/opioid_deaths_nozero.csv')
+  omnivore.csv('data/opioid_deaths_new.csv')
     .on('ready', function (e) {
       drawMap(e.target.toGeoJSON());
       drawLegend(e.target.toGeoJSON()); // add this statement
     })
-    // .on('error', function (e) {
-    //   console.log(e.error[0].message);
+     .on('error', function (e) {
+       console.log(e.error[0].message);
     
-    // });
+     });
 
   function drawMap(data) {
     console.log(data);
@@ -63,7 +63,7 @@
       color: '#E34A33',
     });
     heroinLayer.setStyle({
-      color: '#B30000',
+      color: '#FFFF00',
     });
     resizeCircles(naturalLayer, syntheticLayer, methadoneLayer, heroinLayer,1);
     sequenceUI(naturalLayer, syntheticLayer, methadoneLayer, heroinLayer);
@@ -101,7 +101,7 @@
 
     // good solution for lab
     // update year legend
-    updateGrade(currentYear);
+    updateYear(currentYear);
 
   } // end resizeCircles()
 
@@ -140,17 +140,17 @@
       return controls;
     }
 
-    // add grade legend to map
+    // add year legend to map
     yearControl.addTo(map);
 
     //select the slider's input and listen for change
     $('#slider input[type=range]')
       .on('input', function () {
 
-        // current value of slider is current grade level
+        // current value of slider is current year
         var currentYear = this.value;
 
-        // resize the circles with updated grade level
+        // resize the circles with updated year
         resizeCircles(naturalLayer, syntheticLayer, methadoneLayer, heroinLayer, currentYear);
 
       });
@@ -258,14 +258,14 @@
 
   } // end drawLegend()
 
-  function retrieveInfo(naturalLayer, syntheticLayer, methadoneLayer, heroinLayer, currentYear) {
+  function retrieveInfo(naturalLayer, currentYear) {
 
     // select the element and reference with variable
     // and hide it from view initially
     const info = $('#info').hide();
 
     // since syntheticLayer is on top, use to detect mouseover events
-    syntheticLayer.on('mouseover', function (e) {
+    naturalLayer.on('mouseover', function (e) {
 
       // remove the none class to display and show
       info.show();
@@ -275,35 +275,35 @@
 
       // populate HTML elements with relevant info
       $('#info span').html(props.STATE);
-      $(".ns span:first-naturalLayer-opoid").html('(NS ' + currentYear + ')');
-      $(".so span:first-synthetic-opioid").html('(SO ' + currentYear + ')');
-      $(".so span:first-methadone-opioid").html('(ME ' + currentYear + ')');
-      $(".so span:first-heroin-opioid").html('(HE ' + currentYear + ')');
+      $(".natural span:first-naturalLayer-opoid").html('(NATURAL ' + currentYear + ')');
+      $(".sythetic span:first-synthetic-opioid").html('(SYNTHETIC ' + currentYear + ')');
+      $(".methadone span:first-methadone-opioid").html('(METHADONE ' + currentYear + ')');
+      $(".heroin span:first-heroin-opioid").html('(HEROIN ' + currentYear + ')');
 
-      $(".ns span:last-naturalLayer-opoid").html(Number(props['NS' + currentYear]).toLocaleString());
-      $(".so span:last-synthetic-opiod").html(Number(props['SO' + currentYear]).toLocaleString());
-      $(".so span:last-methadone-opioid").html(Number(props['ME' + currentYear]).toLocaleString());
-      $(".so span:last-heroin-opioid").html(Number(props['HE' + currentYear]).toLocaleString());
+      $(".natural span:last-naturalLayer-opoid").html(Number(props['NATURAL' + currentYear]).toLocaleString());
+      $(".synthetic span:last-synthetic-opiod").html(Number(props['SYNTHETIC' + currentYear]).toLocaleString());
+      $(".methadone span:last-methadone-opioid").html(Number(props['METHADONE' + currentYear]).toLocaleString());
+      $(".heroin span:last-heroin-opioid").html(Number(props['HEROIN' + currentYear]).toLocaleString());
       // raise opacity level as visual affordance
       e.layer.setStyle({
         fillOpacity: .6
       });
 
-      // empty arrays for boys and girls values
-      const nsValues = [],
-        soValues = [],
-        meValues = [],
-        heValues = [];
+      // empty arrays for opioid death values
+      const naturalValues = [],
+        syntheticValues = [],
+        methadoneValues = [],
+        heroinValues = [];
 
-      // loop through the grade levels and push values into those arrays
-      for (let i = 6; i <= 18; i++) {
-        nsValues.push(props['NS' + i]);
-        soValues.push(props['SO' + i]);
-        meValues.push(props['ME' + i]);
-        heValues.push(props['HE' + i]);
+      // loop through the year levels and push values into those arrays
+      for (let i = 2006; i <= 2018; i++) {
+        naturalValues.push(props['NATURAL' + i]);
+        syntheticValues.push(props['SYNTHETIC' + i]);
+        methadoneValues.push(props['METHADONE' + i]);
+        heroinValues.push(props['HEROIN' + i]);
       }
 
-      $('.nsspark').sparkline(nsValues, {
+      $('.naturalspark').sparkline(naturalValues, {
         width: '200px',
         height: '30px',
         lineColor: '#D96D02',
@@ -312,7 +312,7 @@
         lineWidth: 2
       });
 
-      $('.sospark').sparkline(soValues, {
+      $('.syntheticspark').sparkline(syntheticValues, {
         width: '200px',
         height: '30px',
         lineColor: '#6E77B0',
@@ -320,7 +320,7 @@
         spotRadius: 0,
         lineWidth: 2
       });
-      $('.mespark').sparkline(soValues, {
+      $('.methadonespark').sparkline(methadoneValues, {
         width: '200px',
         height: '30px',
         lineColor: '#6E77B0',
@@ -328,7 +328,7 @@
         spotRadius: 0,
         lineWidth: 2
       });
-      $('.hespark').sparkline(soValues, {
+      $('.heroinspark').sparkline(heroinValues, {
         width: '200px',
         height: '30px',
         lineColor: '#6E77B0',
