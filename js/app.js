@@ -132,7 +132,7 @@
 
     yearControl.onAdd = function (map) {
 
-      const controls = L.DomUtil.get("year");
+      const controls = L.DomUtil.get("currentYear");
 
       L.DomEvent.disableScrollPropagation(controls);
       L.DomEvent.disableClickPropagation(controls);
@@ -183,9 +183,9 @@
     const dataValues = [];
 
     // loop through all features (i.e., the states)
-    data.features.forEach(function (states) {
+    data.features.forEach(function (state) {
       // for each year in a state
-      for (let opiodType in states.properties[0]) {
+      for (let opiodType in states.properties) {
         // shorthand to each value
         const value = states.properties[opiodType];
         // if the value can be converted to a number 
