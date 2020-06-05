@@ -2,11 +2,11 @@
 
   const map = L.map('map', {
     zoomSnap: .1,
-    center: [-39.82, 98.57],
+    center: [-39.50, 98.35],
     zoom: 7,
     minZoom: 1,
     maxZoom: 10,
-    // maxBounds: L.latLngBounds([-6.22, 27.72], [5.76, 47.83])
+    // maxBounds: L.latLngBounds([-52.499550, 135.276413], [-26.162102, 65.233040])
   });
 
   const accessToken = 'pk.eyJ1IjoiZG1lMjU2IiwiYSI6ImNrMDh5ajZhaTAzOHEzb293NGl1dGJyMDYifQ.ulN1IYya6BL917CGdf5OIA'
