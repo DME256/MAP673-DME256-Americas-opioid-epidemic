@@ -19,7 +19,7 @@
   }).addTo(map);
 
   // use omnivore to load the CSV data
-  omnivore.csv('data/opioid_deaths_new.csv')
+  omnivore.csv('data/opioid_deaths_nozero.csv')
     .on('ready', function (e) {
       drawMap(e.target.toGeoJSON());
       drawLegend(e.target.toGeoJSON()); // add this statement
@@ -65,7 +65,7 @@
     heroinLayer.setStyle({
       color: '#B30000',
     });
-    resizeCircles(naturalLayer, syntheticLayer, methadoneLayer, heroinLayer, 3);
+    resizeCircles(naturalLayer, syntheticLayer, methadoneLayer, heroinLayer,1);
     sequenceUI(naturalLayer, syntheticLayer, methadoneLayer, heroinLayer);
 
   } // end drawMap()
@@ -80,19 +80,19 @@
   function resizeCircles(naturalLayer, syntheticLayer, methadoneLayer, heroinLayer, currentYear) {
 
     naturalLayer.eachLayer(function (layer) {
-      var radius = calcRadius(Number(layer.feature.properties['NS' + currentYear]));
+      var radius = calcRadius(Number(layer.feature.properties['NATURAL' + currentYear]));
       layer.setRadius(radius);
     });
     syntheticLayer.eachLayer(function (layer) {
-      var radius = calcRadius(Number(layer.feature.properties['SO' + currentYear]));
+      var radius = calcRadius(Number(layer.feature.properties['SYNTHETIC' + currentYear]));
       layer.setRadius(radius);
     });
     methadoneLayer.eachLayer(function (layer) {
-      var radius = calcRadius(Number(layer.feature.properties['ME' + currentYear]));
+      var radius = calcRadius(Number(layer.feature.properties['METHADONE' + currentYear]));
       layer.setRadius(radius);
     });
     syntheticLayer.eachLayer(function (layer) {
-      var radius = calcRadius(Number(layer.feature.properties['HE' + currentYear]));
+      var radius = calcRadius(Number(layer.feature.properties['HEROIN' + currentYear]));
       layer.setRadius(radius);
     });
 
@@ -187,7 +187,7 @@
       // for each year in a state
       for (let opiodType in states.properties) {
         // shorthand to each value
-        const value = states.properties[year];
+        const value = states.properties[opiodType];
         // if the value can be converted to a number 
         // the + operator in front of a number returns a number
         if (+value) {

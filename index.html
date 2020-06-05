@@ -30,7 +30,7 @@
         <footer class='px12 py12 bg-gray-faint txt-s'>
           <ul>
             <li>Explore the raw
-              <a class='link' href='data/opioid_deaths_new.csv'>data</a>
+              <a class='link' href='data/opioid_deaths_nozero.csv'>data</a>
             </li>
             <li>Map authored by
               <a class='link' href="https://github.com/dme256">Dave Metzgar</a>
@@ -93,20 +93,31 @@
         <!-- Select the icon shape -->
         <use xlink:href=#icon-circle></use>
       </svg>
+      <svg class='icon h24 w24 methadone'>
+        <!-- Select the icon shape -->
+        <use xlink:href=#icon-circle></use>
+      </svg>
+      <svg class='icon h24 w24 heroin'>
+        <!-- Select the icon shape -->
+        <use xlink:href=#icon-circle></use>
+      </svg>
     </button>
   </div>
 
   <!-- info -->
   <div id='info' class='py6 px12 bg-white border border--gray-light round fixed w240'>
-    <p>state: <span></span></p>
-    <p class='girls'>Natural opioid RX <span></span>: <span class='txt-l txt-bold'></span></p>
-    <p class='boys'>Synthetic opioid RX <span></span>: <span class='txt-l txt-bold'></span></p>
-
+    <p>State: <span></span></p>
+    <p class='natural'>Natural RX<span></span>: <span class='txt-l txt-bold'></span></p>
+    <p class='synthetic'>Synthetic RX <span></span>: <span class='txt-l txt-bold'></span></p>
+    <p class='methadone'>Methadone <span></span>: <span class='txt-l txt-bold'></span></p>
+    <p class='heroin'>Heroin <span></span>: <span class='txt-l txt-bold'></span></p>
   <!-- Additional elements added here for this step! -->
   <hr class='txt-hr'>
-  <p class='my6'>trend: years 2006 &ndash; 2018</p>
-  <p class='mb6'><span class='girlspark'></span></p>
-  <p><span class='boyspark'></span></p>
+  <p class='my6'>trend: Years 2006 &ndash; 2018</p>
+  <p class='mb6'><span class='naturalspark'></span></p>
+  <p><span class='syntheticspark'></span></p>
+  <p><span class='methadone'></span></p>
+  <p><span class='heroin'></span></p>
   </div>
 
   <script async defer src="https://api.mapbox.com/mapbox-assembly/v0.24.0/assembly.js"></script>
