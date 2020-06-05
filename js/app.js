@@ -3,7 +3,7 @@
   const map = L.map('map', {
     zoomSnap: .1,
     center: [-39.82, 98.57],
-    zoom: 5,
+    zoom: 7,
     minZoom: 1,
     maxZoom: 10,
     // maxBounds: L.latLngBounds([-6.22, 27.72], [5.76, 47.83])
@@ -185,7 +185,7 @@
     // loop through all features (i.e., the states)
     data.features.forEach(function (states) {
       // for each year in a state
-      for (let opiodType in states.properties) {
+      for (let opiodType in states.properties[0]) {
         // shorthand to each value
         const value = states.properties[opiodType];
         // if the value can be converted to a number 
