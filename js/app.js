@@ -91,7 +91,7 @@
       var radius = calcRadius(Number(layer.feature.properties['METHADONE' + currentYear]));
       layer.setRadius(radius);
     });
-    syntheticLayer.eachLayer(function (layer) {
+    heroinLayer.eachLayer(function (layer) {
       var radius = calcRadius(Number(layer.feature.properties['HEROIN' + currentYear]));
       layer.setRadius(radius);
     });
