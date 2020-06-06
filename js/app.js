@@ -2,11 +2,11 @@
 
   const map = L.map('map', {
     zoomSnap: .1,
-    center: [-39.50, 98.35],
-    zoom: 7,
-    minZoom: 1,
-    maxZoom: 10,
-    // maxBounds: L.latLngBounds([-52.499550, 135.276413], [-26.162102, 65.233040])
+    center: [-37.50, 98.35],
+    zoom: 3,
+    minZoom: 4,
+    maxZoom: 15,
+    maxBounds: L.latLngBounds([20.499550, -128.276413], [52.162102, -46.233040])
   });
 
   const accessToken = 'pk.eyJ1IjoiZG1lMjU2IiwiYSI6ImNrMDh5ajZhaTAzOHEzb293NGl1dGJyMDYifQ.ulN1IYya6BL917CGdf5OIA'
@@ -74,7 +74,7 @@
   function calcRadius(val) {
 
     var radius = Math.sqrt(val / Math.PI);
-    return radius * .5; // adjust .5 as a scale factor
+    return radius * 1.5; // adjust .5 as a scale factor
 
   } // end calcRadius()
 
@@ -280,32 +280,37 @@
 
       // populate HTML elements with relevant info
       $('#info span').html(props.STATE);
-      $(".natural span:first-naturalLayer-opoid").html('(NATURAL ' + currentYear + ')');
-      $(".sythetic span:first-synthetic-opioid").html('(SYNTHETIC ' + currentYear + ')');
-      $(".methadone span:first-methadone-opioid").html('(METHADONE ' + currentYear + ')');
       $(".heroin span:first-heroin-opioid").html('(HEROIN ' + currentYear + ')');
-
-      $(".natural span:last-naturalLayer-opoid").html(Number(props['NATURAL' + currentYear]).toLocaleString());
-      $(".synthetic span:last-synthetic-opiod").html(Number(props['SYNTHETIC' + currentYear]).toLocaleString());
-      $(".methadone span:last-methadone-opioid").html(Number(props['METHADONE' + currentYear]).toLocaleString());
+      $(".methadone span:first-methadone-opioid").html('(METHADONE ' + currentYear + ')');
+      $(".natural span:first-natural-opoid").html('(NATURAL ' + currentYear + ')');
+      $(".sythetic span:first-synthetic-opioid").html('(SYNTHETIC ' + currentYear + ')');
+      
+      
       $(".heroin span:last-heroin-opioid").html(Number(props['HEROIN' + currentYear]).toLocaleString());
+      $(".methadone span:last-methadone-opioid").html(Number(props['METHADONE' + currentYear]).toLocaleString());
+      $(".natural span:last-natural-opoid").html(Number(props['NATURAL' + currentYear]).toLocaleString());
+      $(".synthetic span:last-synthetic-opiod").html(Number(props['SYNTHETIC' + currentYear]).toLocaleString());
+      
+      
       // raise opacity level as visual affordance
       e.layer.setStyle({
         fillOpacity: .6
       });
 
       // empty arrays for opioid death values
-      const naturalValues = [],
-        syntheticValues = [],
+      const heroinValues = [],
         methadoneValues = [],
-        heroinValues = [];
+        naturalValues = [],
+        syntheticValues = [];
+        
+        
 
       // loop through the year levels and push values into those arrays
       for (let i = 2006; i <= 2018; i++) {
+        heroinValues.push(props['HEROIN' + i]);
+        methadoneValues.push(props['METHADONE' + i]);
         naturalValues.push(props['NATURAL' + i]);
         syntheticValues.push(props['SYNTHETIC' + i]);
-        methadoneValues.push(props['METHADONE' + i]);
-        heroinValues.push(props['HEROIN' + i]);
       }
 
       $('.naturalspark').sparkline(naturalValues, {
