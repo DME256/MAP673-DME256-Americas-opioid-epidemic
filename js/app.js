@@ -280,10 +280,10 @@
 
       // populate HTML elements with relevant info
       $('#info span').html(props.STATE);
-      $(".heroin span:first-heroin-opioid").html('(HEROIN ' + currentYear + ')');
-      $(".methadone span:first-methadone-opioid").html('(METHADONE ' + currentYear + ')');
-      $(".natural span:first-natural-opoid").html('(NATURAL ' + currentYear + ')');
-      $(".sythetic span:first-synthetic-opioid").html('(SYNTHETIC ' + currentYear + ')');
+      $(".heroin span:first-heroin-opioid").html('(year' + currentYear + ')');
+      $(".methadone span:first-methadone-opioid").html('(Year ' + currentYear + ')');
+      // $(".natural span:first-natural-opoid").html('(NATURAL ' + currentYear + ')');
+      // $(".sythetic span:first-synthetic-opioid").html('(SYNTHETIC ' + currentYear + ')');
       
       
       $(".heroin span:last-heroin-opioid").html(Number(props['HEROIN' + currentYear]).toLocaleString());
