@@ -2,9 +2,9 @@
 
   const map = L.map('map', {
     zoomSnap: .1,
-    center: [-37.50, 98.35],
-    zoom: 3,
-    minZoom: 4,
+    center: [-50.50, 98.35],
+    zoom: 4,
+    minZoom: 3,
     maxZoom: 15,
     maxBounds: L.latLngBounds([20.499550, -128.276413], [52.162102, -46.233040])
   });
@@ -54,16 +54,16 @@
     map.setZoom(map.getZoom() - .4);
 
     naturalLayer.setStyle({
-      color: '#D96D02',
+      color: '#BCA9F5',
     });
     syntheticLayer.setStyle({
-      color: '#6E77B0',
+      color: '#F5DA81',
     });
     methadoneLayer.setStyle({
-      color: '#E34A33',
+      color: '#FFFF00',
     });
     heroinLayer.setStyle({
-      color: '#FFFF00',
+      color: '#FF0000',
     });
     // pass the correct argument for current year
     resizeCircles(naturalLayer, syntheticLayer, methadoneLayer, heroinLayer,2006);
@@ -99,7 +99,7 @@
     });
 
     // update the hover window with current year
-    retrieveInfo(syntheticLayer, currentYear);
+    retrieveInfo(heroinLayer, currentYear);
 
     // good solution for lab
     // update year legend
@@ -134,7 +134,7 @@
 
     yearControl.onAdd = function (map) {
 
-      const controls = L.DomUtil.get("currentYear");
+      const controls = L.DomUtil.get("year");
 
       L.DomEvent.disableScrollPropagation(controls);
       L.DomEvent.disableClickPropagation(controls);
@@ -185,14 +185,14 @@
     const dataValues = [];
 
     // loop through all features (i.e., the states)
-    data.features.forEach(function (state) {
+    data.features.forEach(function (stateInfo) {
       console.log(data)
       // for each year in a state
       // use correct variable name
-      for (let opiodType in state.properties) {
+      for (let year in stateInfo.properties) {
         // shorthand to each value
         // use correct variable name
-        const value = state.properties[opiodType];
+        const value = stateInfo.properties[year];
         // if the value can be converted to a number 
         // the + operator in front of a number returns a number
         if (+value) {
@@ -278,18 +278,17 @@
       // access properties of target layer
       const props = e.layer.feature.properties;
 
-      // populate HTML elements with relevant info
-      $('#info span').html(props.STATE);
-      $(".heroin span:first-heroin-opioid").html('(year' + currentYear + ')');
-      $(".methadone span:first-methadone-opioid").html('(Year ' + currentYear + ')');
-      // $(".natural span:first-natural-opoid").html('(NATURAL ' + currentYear + ')');
-      // $(".sythetic span:first-synthetic-opioid").html('(SYNTHETIC ' + currentYear + ')');
-      
-      
-      $(".heroin span:last-heroin-opioid").html(Number(props['HEROIN' + currentYear]).toLocaleString());
-      $(".methadone span:last-methadone-opioid").html(Number(props['METHADONE' + currentYear]).toLocaleString());
-      $(".natural span:last-natural-opoid").html(Number(props['NATURAL' + currentYear]).toLocaleString());
-      $(".synthetic span:last-synthetic-opiod").html(Number(props['SYNTHETIC' + currentYear]).toLocaleString());
+      // // populate HTML elements with relevant info
+      //  $('#info span').html(props.STATE);
+      // // $(". deathRate span:death-rate").html()
+      // $(".heroin span:first-heroin").html('(year' + currentYear + ')');
+      // $(".methadone span:first-methadone").html('(year ' + currentYear + ')');
+      // $(".natural span:first-natural").html('(year ' + currentYear );
+      // $(".sythetic span:first-synthetic").html('(year' + currentYear + ')');
+      //  $(".heroin span:last-heroin-opioid").html(Number(props['year' + currentYear]).toLocaleString());
+      // $(".methadone span:last-methadone-opioid").html(Number(props['SYNTHETIC ' + currentYear]).toLocaleString());
+      // $(".natural span:last-natural").html(Number(props['METHADONE ' + currentYear]).toLocaleString());
+      // $(".synthetic span:last-synthetic-opiod").html(Number(props['HEROIN ' + currentYear]).toLocaleString());
       
       
       // raise opacity level as visual affordance
@@ -316,8 +315,8 @@
       $('.naturalspark').sparkline(naturalValues, {
         width: '200px',
         height: '30px',
-        lineColor: '#D96D02',
-        fillColor: '#d98939 ',
+        lineColor: '#5F04B4',
+        fillColor: '#8000FF ',
         spotRadius: 0,
         lineWidth: 2
       });
@@ -326,23 +325,23 @@
         width: '200px',
         height: '30px',
         lineColor: '#6E77B0',
-        fillColor: '#878db0',
+        fillColor: '#B404AE',
         spotRadius: 0,
         lineWidth: 2
       });
       $('.methadonespark').sparkline(methadoneValues, {
         width: '200px',
         height: '30px',
-        lineColor: '#6E77B0',
-        fillColor: '#878db0',
+        lineColor: '#8A0808',
+        fillColor: '#FF0000',
         spotRadius: 0,
         lineWidth: 2
       });
       $('.heroinspark').sparkline(heroinValues, {
         width: '200px',
         height: '30px',
-        lineColor: '#6E77B0',
-        fillColor: '#878db0',
+        lineColor: '#FFD500',
+        fillColor: '#FFFF00',
         spotRadius: 0,
         lineWidth: 2
       });

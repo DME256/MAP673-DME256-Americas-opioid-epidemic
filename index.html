@@ -20,12 +20,32 @@
           <!-- <img class="max-image-width" src="graphics/" title="Kg " height="120" -->
             <!-- width="180"> -->
           <h1 class='txt-h1 mb6'>America's Opioid Epidemic</h1>
-          <p>The map displays .</p>
+          <p>Understanding the Epidemic
+            
+            Opiod are classified into 4 categories:
+
+            Natural- Prescription drugs (e.g.  oxycodone, hydrocodone)
+            Synthetic- Psychoactive substances (NPS) that are either known to be opiates or have opiate-like effects.
+               These are not naturally occurring substances(e.g. fentanyl, tramadol)
+            Methadone- Used for pain relief and treatment of drug addiction.
+            Heroin- Illicit drug, opium and morphine is made from the resin of poppy plants. 
+                                 
+            Three Waves of Opioid Overdose Deaths
+            This rise in opioid overdose deaths can be outlined in three distinct waves.
+
+            The first wave began with increased prescribing of opioids in the 1990s, with overdose deaths involving prescription opioids 
+            (natural and semi-synthetic opioids and methadone) increasing since at least 1999.
+            The second wave began in 2010, with rapid increases in overdose deaths involving heroin.
+            The third wave began in 2013, with significant increases in overdose deaths involving synthetic opioids, 
+            particularly those involving illicitly manufactured fentanyl. The market for illicitly manufactured fentanyl continues to change, 
+            and it can be found in combination with heroin, counterfeit pills, and cocaine.
+          
+          </p>
             <!-- <img class="max-image-width" src="" title=" xx" height="150" -->
             <!-- width="280"> -->
           <h2 class='txt-xl mt18 mb12'>Map Info</h2>
           <p>The data comes CDC and KFF</p>
-          <a class='link' href="https://">KFF.GOV</a>
+          <a class='link' href="https:https://www.kff.org/state-category/health-status/opioids/">KFF.ORG</a>
         </div>
         <footer class='px12 py12 bg-gray-faint txt-s'>
           <ul>
@@ -47,13 +67,13 @@
   </div>
 
   <!-- year -->
-    <div id='currentYear' class='pt6 px12 bg-white border border--gray-light round'>
+    <div id='year' class='pt6 px12 bg-white border border--gray-light round'>
           <p class='txt-bold'>Year: <span>2006</span></p>
       </div>
 
   <!-- ui slider -->
   <div id='slider' class='range w240 bg-white round-ml px12'>
-    <input type='range' min="2006" , max="2018" , value="1" , step="1" />
+    <input type='range' min="2006" , max="2018" , value="2006" , step="1" class="currentYear" />
   </div>
 
   <!-- legend -->
@@ -63,8 +83,8 @@
       Displays as a block when >= 800px
      -->
      <div class='none block-ml'>
-      <h3 class='txt-bold mb12 w180'>Number of <span class="NS">Natural RX</span> and <span class="SO">Synthetic RX</span> and 
-        <span class="ME">Methadone</span> and <span class="HE">Heroin</span>
+      <h3 class='txt-bold mb12 w180'>Number of <span class="NATURAL">Natural RX</span> and <span class="SYNTHETIC">Synthetic RX</span> and 
+        <span class="METHADONE">Methadone</span> and <span class="HEROIN">Heroin</span>
         deaths by opioid type</h3>
 
       <div class='legend-circles relative w180'>
@@ -107,10 +127,11 @@
   <!-- info -->
   <div id='info' class='py6 px12 bg-white border border--gray-light round fixed w240'>
     <p>State: <span></span></p>
-    <p class='natural'>Natural RX<span></span>: <span class='txt-l txt-bold'></span></p>
-    <p class='synthetic'>Synthetic RX <span></span>: <span class='txt-l txt-bold'></span></p>
-    <p class='methadone'>Methadone <span></span>: <span class='txt-l txt-bold'></span></p>
-    <p class='heroin'>Heroin <span></span>: <span class='txt-l txt-bold'></span></p>
+    <p>Deaths per 1000: <span></span></p>
+    <p class='natural'>Natural Deaths <span></span>: <span class='txt-l txt-bold'></span></p>
+    <p class='synthetic'>Synthetic Deaths <span></span>: <span class='txt-l txt-bold'></span></p>
+    <p class='methadone'>Methadone Deaths <span></span>: <span class='txt-l txt-bold'></span></p>
+    <p class='heroin'>Heroin Deaths <span></span>: <span class='txt-l txt-bold'></span></p>
   <!-- Additional elements added here for this step! -->
   <hr class='txt-hr'>
   <p class='my6'>trend: Years 2006 &ndash; 2018</p>
