@@ -57,7 +57,7 @@
       color: '#BCA9F5',
     });
     syntheticLayer.setStyle({
-      color: '#F5DA81',
+      color: '#58FAF4',
     });
     methadoneLayer.setStyle({
       color: '#FFFF00',
@@ -185,14 +185,14 @@
     const dataValues = [];
 
     // loop through all features (i.e., the states)
-    data.features.forEach(function (stateInfo) {
+    data.features.forEach(function (opiodDeaths) {
       console.log(data)
       // for each year in a state
       // use correct variable name
-      for (let year in stateInfo.properties) {
+      for (let year in opiodDeaths.properties) {
         // shorthand to each value
         // use correct variable name
-        const value = stateInfo.properties[year];
+        const value = opiodDeaths.properties[year];
         // if the value can be converted to a number 
         // the + operator in front of a number returns a number
         if (+value) {
@@ -263,13 +263,13 @@
 
   } // end drawLegend()
 
-  function retrieveInfo(naturalLayer, currentYear) {
+  function retrieveInfo(naturalLayer, ) {
 
     // select the element and reference with variable
     // and hide it from view initially
     const info = $('#info').hide();
 
-    // since syntheticLayer is on top, use to detect mouseover events
+    // since naturalLayer is on top, use to detect mouseover events
     naturalLayer.on('mouseover', function (e) {
 
       // remove the none class to display and show
@@ -316,7 +316,7 @@
         width: '200px',
         height: '30px',
         lineColor: '#5F04B4',
-        fillColor: '#8000FF ',
+        fillColor: '#BCA9F5 ',
         spotRadius: 0,
         lineWidth: 2
       });
@@ -325,7 +325,7 @@
         width: '200px',
         height: '30px',
         lineColor: '#6E77B0',
-        fillColor: '#B404AE',
+        fillColor: '#F5DA81',
         spotRadius: 0,
         lineWidth: 2
       });
@@ -333,7 +333,7 @@
         width: '200px',
         height: '30px',
         lineColor: '#8A0808',
-        fillColor: '#FF0000',
+        fillColor: '#FFFF00',
         spotRadius: 0,
         lineWidth: 2
       });
@@ -341,7 +341,7 @@
         width: '200px',
         height: '30px',
         lineColor: '#FFD500',
-        fillColor: '#FFFF00',
+        fillColor: '#FF0000',
         spotRadius: 0,
         lineWidth: 2
       });
