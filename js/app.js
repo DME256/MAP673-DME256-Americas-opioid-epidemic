@@ -8,7 +8,7 @@
       scrollWheelZoom: true,
       zoomSnap: .1,
       dragging: true,
-      zoomControl: false
+      zoomControl: true
   });
   
 
@@ -20,6 +20,8 @@
     id: 'mapbox.dark',
     accessToken: accessToken
   }).addTo(map);
+
+  
 
   // use omnivore to load the CSV data
   omnivore.csv('data/opioid_deaths_new.csv')
@@ -70,7 +72,7 @@
       color: '#FF0000',
     });
 
-    var sourceLayers = {
+    const sourceLayers = {
 		 "<b style='color:#BCA9F5'>Natural Opiods</b>": naturalLayer,
 			"<b style='color:#58FAF4'>Synthetic Opiods</b>": syntheticLayer,
       "<b style='color:#FFFACD'>Methadone</b>": methadoneLayer,
@@ -188,7 +190,7 @@
 
       // select the legend using id attribute of legend
       const legend = L.DomUtil.get("legend");
-
+      
       // disable scroll and click functionality 
       L.DomEvent.disableScrollPropagation(legend);
       L.DomEvent.disableClickPropagation(legend);
@@ -297,11 +299,12 @@
 
       // // // populate HTML elements with relevant info
        $('#info span').html(props.STATE);
-      // //  $(". deathRate span:death-rate").html()
-      //  $(".heroin span:first-heroin").html('(HEROIN' + currentYear + ')');
+      // $(".year span:first-year").html('(YEAR' + currentYear + ')')
+      // $(".heroin span:first-heroin").html('(HEROIN' + currentYear + ')');
       // $(".methadone span:first-methadone").html('(METHADONE ' + currentYear + ')');
       // $(".natural span:first-natural").html('(NATURAL' + currentYear );
       // $(".sythetic span:first-synthetic").html('(SYNTHETIC' + currentYear + ')');
+      // $(".year span:last-year").html(Number(props['YEAR' + currentYear]).toLocaleString());
       // $(".heroin span:last-heroin").html(Number(props['HEROIN' + currentYear]).toLocaleString());
       // $(".methadone span:last-methadone-opioid").html(Number(props['SYNTHETIC ' + currentYear]).toLocaleString());
       // $(".natural span:last-natural").html(Number(props['NATURAL ' + currentYear]).toLocaleString());
