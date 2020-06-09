@@ -23,14 +23,21 @@ body {
   font-family: "Work Sans", sans-serif;
 }
 
-.Natural {
-  color:#D96D02;
+.synthetic {
+  color:#58FAF4;
 }
 
-.Synthetic {
+.natural {
   color: #6E77B0;
   }
 
+.methadone {
+  color:#FFFACD;
+  }
+
+.heroin {
+    color:#FF0000;
+    }
  
 h1 {
   color: orange;

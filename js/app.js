@@ -43,13 +43,13 @@
     }
 
     // create 4 separate layers from GeoJSON data
-    const naturalLayer = L.geoJson(data, options).addTo(map),
-      syntheticLayer = L.geoJson(data, options).addTo(map),
-      methadoneLayer = L.geoJson(data, options).addTo(map),
-      heroinLayer = L.geoJson(data, options).addTo(map);
+    const heroinLayer = L.geoJson(data, options).addTo(map),
+    methadoneLayer = L.geoJson(data, options).addTo(map),
+    naturalLayer = L.geoJson(data, options).addTo(map),
+    syntheticLayer = L.geoJson(data, options).addTo(map);
 
     // fit the bounds of the map to one of the layers
-    map.fitBounds(naturalLayer.getBounds());
+    map.fitBounds(syntheticLayer.getBounds());
 
     // adjust zoom level of map
     map.setZoom(map.getZoom() - .4);
@@ -61,7 +61,7 @@
       color: '#58FAF4',
     });
     methadoneLayer.setStyle({
-      color: '#FFFF00',
+      color: '#FFFACD',
     });
     heroinLayer.setStyle({
       color: '#FF0000',
@@ -70,7 +70,7 @@
     var sourceLayers = {
 		 "<b style='color:#BCA9F5'>Natural Opiods</b>": naturalLayer,
 			"<b style='color:#58FAF4'>Synthetic Opiods</b>": syntheticLayer,
-      "<b style='color:#FFFF00'>Methadone</b>": methadoneLayer,
+      "<b style='color:#FFFACD'>Methadone</b>": methadoneLayer,
       "<b style='color:#FF0000'>Heroin</b>": heroinLayer
 
 		}
@@ -113,7 +113,7 @@
     });
 
     // update the hover window with current year
-    retrieveInfo(naturalLayer, currentYear);
+    retrieveInfo(syntheticLayer, currentYear);
 
     // good solution for lab
     // update year legend
@@ -277,14 +277,14 @@
 
   } // end drawLegend()
 
-  function retrieveInfo(naturalLayer, ) {
+  function retrieveInfo(syntheticLayer, currentYear) {
 
     // select the element and reference with variable
     // and hide it from view initially
     const info = $('#info').hide();
 
     // since naturalLayer is on top, use to detect mouseover events
-    naturalLayer.on('mouseover', function (e) {
+    syntheticLayer.on('mouseover', function (e) {
 
       // remove the none class to display and show
       info.show();
@@ -339,22 +339,22 @@
         width: '200px',
         height: '30px',
         lineColor: '#6E77B0',
-        fillColor: '#F5DA81',
+        fillColor: '#58FAF4',
         spotRadius: 0,
         lineWidth: 2
       });
       $('.methadonespark').sparkline(methadoneValues, {
         width: '200px',
         height: '30px',
-        lineColor: '#8A0808',
-        fillColor: '#FFFF00',
+        lineColor: '#FFD500',
+        fillColor: '#FFFACD',
         spotRadius: 0,
         lineWidth: 2
       });
       $('.heroinspark').sparkline(heroinValues, {
         width: '200px',
         height: '30px',
-        lineColor: '#FFD500',
+        lineColor: '#8a0808',
         fillColor: '#FF0000',
         spotRadius: 0,
         lineWidth: 2
@@ -362,7 +362,7 @@
     });
 
     // hide the info panel when mousing off layergroup and remove affordance opacity
-    naturalLayer.on('mouseout', function (e) {
+    syntheticLayer.on('mouseout', function (e) {
 
       // hide the info panel
       info.hide();
