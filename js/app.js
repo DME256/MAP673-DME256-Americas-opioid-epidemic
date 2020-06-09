@@ -22,7 +22,7 @@
   omnivore.csv('data/opioid_deaths_new.csv')
     .on('ready', function (e) {
       drawMap(e.target.toGeoJSON());
-      // drawLegend(e.target.toGeoJSON()); // add this statement
+      drawLegend(e.target.toGeoJSON()); // add this statement
     })
      .on('error', function (e) {
        console.log(e.error[0].message);
@@ -47,7 +47,7 @@
       syntheticLayer = L.geoJson(data, options).addTo(map),
       methadoneLayer = L.geoJson(data, options).addTo(map),
       heroinLayer = L.geoJson(data, options).addTo(map);
-      
+
     // fit the bounds of the map to one of the layers
     map.fitBounds(naturalLayer.getBounds());
 
@@ -68,7 +68,7 @@
     });
 
     var sourceLayers = {
-		  "<b style='color:#BCA9F5'>Natural Opiods</b>": naturalLayer,
+		 "<b style='color:#BCA9F5'>Natural Opiods</b>": naturalLayer,
 			"<b style='color:#58FAF4'>Synthetic Opiods</b>": syntheticLayer,
       "<b style='color:#FFFF00'>Methadone</b>": methadoneLayer,
       "<b style='color:#FF0000'>Heroin</b>": heroinLayer
@@ -113,7 +113,7 @@
     });
 
     // update the hover window with current year
-    retrieveInfo(heroinLayer, currentYear);
+    retrieveInfo(naturalLayer, currentYear);
 
     // good solution for lab
     // update year legend
@@ -172,110 +172,110 @@
       });
   } // end sequenceUI()
 
-  // function drawLegend(data) {
+  function drawLegend(data) {
 
-  //   // create Leaflet control for the legend
-  //   const legendControl = L.control({
-  //     position: 'topright'
-  //   });
+    // create Leaflet control for the legend
+    const legendControl = L.control({
+      position: 'topright'
+    });
 
-  //   // when the control is added to the map
+    // when the control is added to the map
 
-  //   legendControl.onAdd = function (map) {
+    legendControl.onAdd = function (map) {
 
-  //     // select the legend using id attribute of legend
-  //     const legend = L.DomUtil.get("legend");
+      // select the legend using id attribute of legend
+      const legend = L.DomUtil.get("legend");
 
-  //     // disable scroll and click functionality 
-  //     L.DomEvent.disableScrollPropagation(legend);
-  //     L.DomEvent.disableClickPropagation(legend);
+      // disable scroll and click functionality 
+      L.DomEvent.disableScrollPropagation(legend);
+      L.DomEvent.disableClickPropagation(legend);
 
-  //     // return the selection
-  //     return legend;
+      // return the selection
+      return legend;
 
-  //   }
+    }
 
-  //   // empty array to hold values
-  //   const dataValues = [];
+    // empty array to hold values
+    const dataValues = [];
 
-  //   // loop through all features (i.e., the states)
-  //   data.features.forEach(function (state) {
-  //     console.log(data)
-  //     // for each year in a state
-  //     // use correct variable name
-  //     for (let year in opiodDeaths.properties) {
-  //       // shorthand to each value
-  //       // use correct variable name
-  //       const value = opiodDeaths.state[opiodType];
-  //       // if the value can be converted to a number 
-  //       // the + operator in front of a number returns a number
-  //       if (+value) {
-  //         //return the value to the array
-  //         dataValues.push(+value);
-  //       }
-  //     }
-  //   });
-  //   // verify your results!
-  //   console.log(dataValues);
-
-
-  //   // sort our array
-  //   const sortedValues = dataValues.sort(function (a, b) {
-  //     return b - a;
-  //   });
-
-  //   // round the highest number and use as our large circle diameter
-  //   const maxValue = Math.round(sortedValues[0] / 1000) * 1000;
+    // loop through all features (i.e., the states)
+    data.features.forEach(function (state) {
+      console.log(data)
+      // for each year in a state
+      // use correct variable name
+      for (let opiodType in state.properties) {
+        // shorthand to each value
+        // use correct variable name
+        const value = state.properties[opiodType];
+        // if the value can be converted to a number 
+        // the + operator in front of a number returns a number
+        if (+value) {
+          //return the value to the array
+          dataValues.push(+value);
+        }
+      }
+    });
+    // verify your results!
+    console.log(dataValues);
 
 
-  //   // calc the diameters
-  //   const largeDiameter = calcRadius(maxValue) * 2,
-  //     smallDiameter = largeDiameter / 2;
+    // sort our array
+    const sortedValues = dataValues.sort(function (a, b) {
+      return b - a;
+    });
 
-  //   // select our circles container and set the height
-  //   $(".legend-circles").css('height', largeDiameter.toFixed());
+    // round the highest number and use as our large circle diameter
+    const maxValue = Math.round(sortedValues[0] / 1000) * 1000;
 
-  //   // set width and height for large circle
-  //   $('.legend-large').css({
-  //     'width': largeDiameter.toFixed(),
-  //     'height': largeDiameter.toFixed()
-  //   });
-  //   // set width and height for small circle and position
-  //   $('.legend-small').css({
-  //     'width': smallDiameter.toFixed(),
-  //     'height': smallDiameter.toFixed(),
-  //     'top': largeDiameter - smallDiameter,
-  //     'left': smallDiameter / 2
-  //   })
 
-  //   // label the max and median value
-  //   $(".legend-large-label").html(maxValue.toLocaleString());
-  //   $(".legend-small-label").html((maxValue / 2).toLocaleString());
+    // calc the diameters
+    const largeDiameter = calcRadius(maxValue) * 2,
+      smallDiameter = largeDiameter / 2;
 
-  //   // adjust the position of the large based on size of circle
-  //   $(".legend-large-label").css({
-  //     'top': -11,
-  //     'left': largeDiameter + 30,
-  //   });
+    // select our circles container and set the height
+    $(".legend-circles").css('height', largeDiameter.toFixed());
 
-  //   // adjust the position of the large based on size of circle
-  //   $(".legend-small-label").css({
-  //     'top': smallDiameter - 11,
-  //     'left': largeDiameter + 30
-  //   });
+    // set width and height for large circle
+    $('.legend-large').css({
+      'width': largeDiameter.toFixed(),
+      'height': largeDiameter.toFixed()
+    });
+    // set width and height for small circle and position
+    $('.legend-small').css({
+      'width': smallDiameter.toFixed(),
+      'height': smallDiameter.toFixed(),
+      'top': largeDiameter - smallDiameter,
+      'left': smallDiameter / 2
+    })
 
-  //   // insert a couple hr elements and use to connect value label to top of each circle
-  //   $("<hr class='large'>").insertBefore(".legend-large-label")
-  //   $("<hr class='small'>").insertBefore(".legend-small-label").css('top', largeDiameter - smallDiameter - 8);
-  //   // Select the legend button and wait for click event
-  //   $('#legend button').click(function () {
-  //     // Select all div elements in #legend and toggle the none class on click
-  //     $('#legend > div').toggleClass('none');
-  //   });
+    // label the max and median value
+    $(".legend-large-label").html(maxValue.toLocaleString());
+    $(".legend-small-label").html((maxValue / 2).toLocaleString());
 
-  //   legendControl.addTo(map);
+    // adjust the position of the large based on size of circle
+    $(".legend-large-label").css({
+      'top': -11,
+      'left': largeDiameter + 30,
+    });
 
-  // } // end drawLegend()
+    // adjust the position of the large based on size of circle
+    $(".legend-small-label").css({
+      'top': smallDiameter - 11,
+      'left': largeDiameter + 30
+    });
+
+    // insert a couple hr elements and use to connect value label to top of each circle
+    $("<hr class='large'>").insertBefore(".legend-large-label")
+    $("<hr class='small'>").insertBefore(".legend-small-label").css('top', largeDiameter - smallDiameter - 8);
+    // Select the legend button and wait for click event
+    $('#legend button').click(function () {
+      // Select all div elements in #legend and toggle the none class on click
+      $('#legend > div').toggleClass('none');
+    });
+
+    legendControl.addTo(map);
+
+  } // end drawLegend()
 
   function retrieveInfo(naturalLayer, ) {
 
@@ -292,17 +292,17 @@
       // access properties of target layer
       const props = e.layer.feature.properties;
 
-      // // populate HTML elements with relevant info
-      //  $('#info span').html(props.STATE);
-      // // $(". deathRate span:death-rate").html()
-      // $(".heroin span:first-heroin").html('(year' + currentYear + ')');
-      // $(".methadone span:first-methadone").html('(year ' + currentYear + ')');
-      // $(".natural span:first-natural").html('(year ' + currentYear );
-      // $(".sythetic span:first-synthetic").html('(year' + currentYear + ')');
-      //  $(".heroin span:last-heroin-opioid").html(Number(props['year' + currentYear]).toLocaleString());
+      // // // populate HTML elements with relevant info
+       $('#info span').html(props.STATE);
+      // //  $(". deathRate span:death-rate").html()
+      //  $(".heroin span:first-heroin").html('(HEROIN' + currentYear + ')');
+      // $(".methadone span:first-methadone").html('(METHADONE ' + currentYear + ')');
+      // $(".natural span:first-natural").html('(NATURAL' + currentYear );
+      // $(".sythetic span:first-synthetic").html('(SYNTHETIC' + currentYear + ')');
+      // $(".heroin span:last-heroin").html(Number(props['HEROIN' + currentYear]).toLocaleString());
       // $(".methadone span:last-methadone-opioid").html(Number(props['SYNTHETIC ' + currentYear]).toLocaleString());
-      // $(".natural span:last-natural").html(Number(props['METHADONE ' + currentYear]).toLocaleString());
-      // $(".synthetic span:last-synthetic-opiod").html(Number(props['HEROIN ' + currentYear]).toLocaleString());
+      // $(".natural span:last-natural").html(Number(props['NATURAL ' + currentYear]).toLocaleString());
+      // $(".synthetic span:last-synthetic-opiod").html(Number(props['SYNTHETIC ' + currentYear]).toLocaleString());
       
       
       // raise opacity level as visual affordance
