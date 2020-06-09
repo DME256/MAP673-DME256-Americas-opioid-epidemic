@@ -1,13 +1,16 @@
 (function () {
 
   const map = L.map('map', {
-    zoomSnap: .1,
-    center: [-50.50, 98.35],
-    zoom: 4,
-    minZoom: 3,
-    maxZoom: 15,
-    maxBounds: L.latLngBounds([20.499550, -128.276413], [52.162102, -46.233040])
+    center: [39.8283, -98.5795],
+      zoom: 4,
+      minZoom: 4,
+      maxZoom: 6,
+      scrollWheelZoom: true,
+      zoomSnap: .1,
+      dragging: true,
+      zoomControl: false
   });
+  
 
   const accessToken = 'pk.eyJ1IjoiZG1lMjU2IiwiYSI6ImNrMDh5ajZhaTAzOHEzb293NGl1dGJyMDYifQ.ulN1IYya6BL917CGdf5OIA'
 
