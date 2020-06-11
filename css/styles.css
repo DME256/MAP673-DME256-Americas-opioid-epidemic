@@ -10,6 +10,8 @@
   border-radius: 50%;
 }
 
+
+
 hr.small, hr.large {
   width: 83px;
   position: absolute;
@@ -32,7 +34,7 @@ body {
   }
 
 .methadone {
-  color:#FFFACD;
+  color:#D96D02;
   }
 
 .heroin {

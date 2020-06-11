@@ -83,7 +83,8 @@
       Displays as a block when >= 800px
      -->
      <div class='none block-ml'> 
-       <h3 class='txt-bold mb12 w180'>Number of <span class="NATURAL">natural</span>  and <span class="Synthetic">synthetic</span>
+       
+       <h3 class='txt-bold mb12 w180'>Number of <span class="NATURAL"></span>   <span class="Synthetic"></span>
         deaths by opioid type</h3>
 
      <div class='legend-circles relative w180'> 
@@ -92,49 +93,54 @@
         <div class="legend-large-label txt-m absolute"></div>
         <div class="legend-small-label txt-m absolute"></div>
       </div>
-    </div> 
+    <!-- </div>  -->
     <!--
       Add a button that doesn't display when the screen width >=800px
       When it does display, show it at the bottom right of the parent div
       Need to attach event listener on button in JS to do something on click
     -->
-    <button class='none-ml bg-white round absolute right bottom'>
+    <!-- <button class='none-ml bg-white round absolute right bottom'> -->
       <!--
         Add a SVG icon with height, width, color, and position it with negative bottom margin
         https://labs.mapbox.com/assembly/documentation/#Icons
       -->
-      <svg class='icon h48 w48 natural mb-neg36'>
+      <!-- <svg class='icon h48 w48 natural mb-neg36'> -->
         <!-- Select the icon shape -->
-        <use xlink:href=#icon-circle></use>
-      </svg>
+        <!-- <use xlink:href=#icon-circle></use> -->
+      <!-- </svg> -->
       <!-- Add a second SVG icon with height, width, and color -->
-      <svg class='icon h36 w36 heroin'>
+      <!-- <svg class='icon h36 w36 heroin'> -->
         <!-- Select the icon shape -->
-        <use xlink:href=#icon-circle></use>
-      </svg>
-      <svg class='icon h36 w36 methadone'>
+        <!-- <use xlink:href=#icon-circle></use> -->
+      <!-- </svg> -->
+      <!-- <svg class='icon h36 w36 methadone'> -->
         <!-- Select the icon shape -->
-        <use xlink:href=#icon-circle></use>
-      </svg>
-      <svg class='icon h36 w36 synthetic'>
+        <!-- <use xlink:href=#icon-circle></use> -->
+      <!-- </svg> -->
+      <!-- <svg class='icon h36 w36 synthetic'> -->
         <!-- Select the icon shape -->
-        <use xlink:href=#icon-circle></use>
-      </svg>
-    </button>
-  </div>
+        <!-- <use xlink:href=#icon-circle></use> -->
+      <!-- </svg> -->
+    <!-- </button> -->
+  <!-- </div> -->
 
   <!-- info -->
-  <div id='info' class='py6 px12 bg-white border border--gray-light round fixed w280'>
+  
+  <!-- <div id='info' class='py6 px12 bg-white border border--gray-light round fixed w280'>
     <p>State: <span class='txt-l txt-bold'></span></p>
     <p class='year'>Death/1000 : <span class='txt-l txt-bold'></span></p>
     <p class='natural'>Natural Deaths : <span class='txt-l txt-bold'></span></p>
     <p class='synthetic'>Synthetic Deaths : <span class='txt-l txt-bold'></span></p>
     <p class='methadon'>Methadone Deaths : <span class='txt-l txt-bold'></span></p>
-    <p class='heroin'>Heroin Deaths : <span class='txt-l txt-bold'></span></p>
+    <p class='heroin'>Heroin Deaths : <span class='txt-l txt-bold'></span></p> -->
+
+  <div id='info'></div>
   <!-- Additional elements added here for this step! -->
   <hr class='txt-hr'>
   <p class='my12'>Trend: Years 2006 &ndash; 2018</p>
-  <p class='mb12'><span class='naturalspark'></span></p>
+  
+  <p class='mb12'><span class='yearspark'></span></p>
+  <p><span class='naturalspark'></span></p>
   <p><span class='syntheticspark'></span></p>
   <p><span class='methadonespark'></span></p>
   <p><span class='heroinspark'></span></p>

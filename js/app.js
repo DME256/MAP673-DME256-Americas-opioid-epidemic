@@ -66,7 +66,7 @@
       color: '#58FAF4',
     });
     methadoneLayer.setStyle({
-      color: '#FFFACD',
+      color: '#D96D02',
     });
     heroinLayer.setStyle({
       color: '#FF0000',
@@ -75,7 +75,7 @@
     const sourceLayers = {
 		 "<b style='color:#BCA9F5'>Natural Opiods</b>": naturalLayer,
 			"<b style='color:#58FAF4'>Synthetic Opiods</b>": syntheticLayer,
-      "<b style='color:#FFFACD'>Methadone</b>": methadoneLayer,
+      "<b style='color:#D96D02'>Methadone</b>": methadoneLayer,
       "<b style='color:#FF0000'>Heroin</b>": heroinLayer
 
 		}
@@ -200,89 +200,89 @@
 
     }
 
-    // empty array to hold values
-    const dataValues = [];
+    // // empty array to hold values
+    // const dataValues = [];
 
-    // loop through all features (i.e., the states)
-    data.features.forEach(function (state) {
-      console.log(data)
-      // for each year in a state
-      // use correct variable name
-      for (let opiodType in state.properties) {
-        // shorthand to each value
-        // use correct variable name
-        const value = state.properties[opiodType];
-        // if the value can be converted to a number 
-        // the + operator in front of a number returns a number
-        if (+value) {
-          //return the value to the array
-          dataValues.push(+value);
-        }
-      }
-    });
-    // verify your results!
-    console.log(dataValues);
-
-
-    // sort our array
-    const sortedValues = dataValues.sort(function (a, b) {
-      return b - a;
-    });
-
-    // round the highest number and use as our large circle diameter
-    const maxValue = Math.round(sortedValues[0] / 1000) * 1000;
+    // // loop through all features (i.e., the states)
+    // data.features.forEach(function (state) {
+    //   console.log(data)
+    //   // for each year in a state
+    //   // use correct variable name
+    //   for (let opiodType in state.properties) {
+    //     // shorthand to each value
+    //     // use correct variable name
+    //     const value = state.properties[opiodType];
+    //     // if the value can be converted to a number 
+    //     // the + operator in front of a number returns a number
+    //     if (+value) {
+    //       //return the value to the array
+    //       dataValues.push(+value);
+    //     }
+    //   }
+    // });
+    // // verify your results!
+    // console.log(dataValues);
 
 
-    // calc the diameters
-    const largeDiameter = calcRadius(maxValue) * 2,
-      smallDiameter = largeDiameter / 2;
+    // // sort our array
+    // const sortedValues = dataValues.sort(function (a, b) {
+    //   return b - a;
+    // });
 
-    // select our circles container and set the height
-    $(".legend-circles").css('height', largeDiameter.toFixed());
+    // // round the highest number and use as our large circle diameter
+    // const maxValue = Math.round(sortedValues[0] / 1000) * 1000;
 
-    // set width and height for large circle
-    $('.legend-large').css({
-      'width': largeDiameter.toFixed(),
-      'height': largeDiameter.toFixed()
-    });
-    // set width and height for small circle and position
-    $('.legend-small').css({
-      'width': smallDiameter.toFixed(),
-      'height': smallDiameter.toFixed(),
-      'top': largeDiameter - smallDiameter,
-      'left': smallDiameter / 2
-    })
 
-    // label the max and median value
-    $(".legend-large-label").html(maxValue.toLocaleString());
-    $(".legend-small-label").html((maxValue / 2).toLocaleString());
+    // // calc the diameters
+    // const largeDiameter = calcRadius(maxValue) * 2,
+    //   smallDiameter = largeDiameter / 2;
 
-    // adjust the position of the large based on size of circle
-    $(".legend-large-label").css({
-      'top': -11,
-      'left': largeDiameter + 30,
-    });
+    // // select our circles container and set the height
+    // $(".legend-circles").css('height', largeDiameter.toFixed());
 
-    // adjust the position of the large based on size of circle
-    $(".legend-small-label").css({
-      'top': smallDiameter - 11,
-      'left': largeDiameter + 30
-    });
+    // // set width and height for large circle
+    // $('.legend-large').css({
+    //   'width': largeDiameter.toFixed(),
+    //   'height': largeDiameter.toFixed()
+    // });
+    // // set width and height for small circle and position
+    // $('.legend-small').css({
+    //   'width': smallDiameter.toFixed(),
+    //   'height': smallDiameter.toFixed(),
+    //   'top': largeDiameter - smallDiameter,
+    //   'left': smallDiameter / 2
+    // })
 
-    // insert a couple hr elements and use to connect value label to top of each circle
-    $("<hr class='large'>").insertBefore(".legend-large-label")
-    $("<hr class='small'>").insertBefore(".legend-small-label").css('top', largeDiameter - smallDiameter - 8);
-    // Select the legend button and wait for click event
-    $('#legend button').click(function () {
-      // Select all div elements in #legend and toggle the none class on click
-      $('#legend > div').toggleClass('none');
-    });
+    // // label the max and median value
+    // $(".legend-large-label").html(maxValue.toLocaleString());
+    // $(".legend-small-label").html((maxValue / 2).toLocaleString());
+
+    // // adjust the position of the large based on size of circle
+    // $(".legend-large-label").css({
+    //   'top': -11,
+    //   'left': largeDiameter + 30,
+    // });
+
+    // // adjust the position of the large based on size of circle
+    // $(".legend-small-label").css({
+    //   'top': smallDiameter - 11,
+    //   'left': largeDiameter + 30
+    // });
+
+    // // insert a couple hr elements and use to connect value label to top of each circle
+    // $("<hr class='large'>").insertBefore(".legend-large-label")
+    // $("<hr class='small'>").insertBefore(".legend-small-label").css('top', largeDiameter - smallDiameter - 8);
+    // // Select the legend button and wait for click event
+    // $('#legend button').click(function () {
+    //   // Select all div elements in #legend and toggle the none class on click
+    //   $('#legend > div').toggleClass('none');
+    // });
 
     legendControl.addTo(map);
 
   } // end drawLegend()
 
-  function retrieveInfo(syntheticLayer, currentYear) {
+  function retrieveInfo(syntheticLayer,yearValues ) {
 
     // select the element and reference with variable
     // and hide it from view initially
@@ -332,6 +332,7 @@
         syntheticValues.push(props['SYNTHETIC' + i]);
       }
 
+      
       $('.naturalspark').sparkline(naturalValues, {
         width: '200px',
         height: '30px',
@@ -353,7 +354,7 @@
         width: '200px',
         height: '30px',
         lineColor: '#FFD500',
-        fillColor: '#FFFACD',
+        fillColor: '#D96D02',
         spotRadius: 0,
         lineWidth: 2
       });
