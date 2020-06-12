@@ -51,6 +51,10 @@ color: orange;
   font-family: 'Work Sans',sans-serif;
 }
 
+h3 {
+  font: bold
+}
+
 #map {
            background: #448ee4;
          }

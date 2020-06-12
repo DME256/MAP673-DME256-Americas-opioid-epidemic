@@ -304,9 +304,7 @@
       $(".synthetic span:first-child").html('(SYNTHETIC' + currentYear + ')');
       $(".methadone span:first-child").html('(METHADONE ' + currentYear + ')');
       $(".heroin span:first-child").html('(HEROIN' + currentYear + ')');
-      
-      
-    
+              
       $(".year span:last-child").html(Number(props['YEAR' + currentYear]).toLocaleString());
       $(".natural span:last-child").html(Number(props['NATURAL ' + currentYear]).toLocaleString());
       $(".synthetic span:last-child").html(Number(props['SYNTHETIC ' + currentYear]).toLocaleString());
@@ -332,10 +330,11 @@
 
       // loop through the year levels and push values into those arrays
       for (let i = 2006; i <= 2018; i++) {
-        heroinValues.push(props['HEROIN' + i]);
-        methadoneValues.push(props['METHADONE' + i]);
         naturalValues.push(props['NATURAL' + i]);
         syntheticValues.push(props['SYNTHETIC' + i]);
+        methadoneValues.push(props['METHADONE' + i]);
+        heroinValues.push(props['HEROIN' + i]);
+               
       }
 
       
