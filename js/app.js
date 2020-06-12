@@ -282,7 +282,7 @@
 
   } // end drawLegend()
 
-  function retrieveInfo(syntheticLayer,yearValues ) {
+  function retrieveInfo(syntheticLayer,currentYear ) {
 
     // select the element and reference with variable
     // and hide it from view initially
@@ -298,17 +298,23 @@
       const props = e.layer.feature.properties;
 
       // // // populate HTML elements with relevant info
-       $('#info span').html(props.STATE);
-      // $(".year span:first-year").html('(YEAR' + currentYear + ')')
-      // $(".heroin span:first-heroin").html('(HEROIN' + currentYear + ')');
-      // $(".methadone span:first-methadone").html('(METHADONE ' + currentYear + ')');
-      // $(".natural span:first-natural").html('(NATURAL' + currentYear );
-      // $(".sythetic span:first-synthetic").html('(SYNTHETIC' + currentYear + ')');
-      // $(".year span:last-year").html(Number(props['YEAR' + currentYear]).toLocaleString());
-      // $(".heroin span:last-heroin").html(Number(props['HEROIN' + currentYear]).toLocaleString());
-      // $(".methadone span:last-methadone-opioid").html(Number(props['SYNTHETIC ' + currentYear]).toLocaleString());
-      // $(".natural span:last-natural").html(Number(props['NATURAL ' + currentYear]).toLocaleString());
-      // $(".synthetic span:last-synthetic-opiod").html(Number(props['SYNTHETIC ' + currentYear]).toLocaleString());
+      $('#info span').html(props.STATE);
+      $(".year span:first-child").html('(YEAR' + currentYear + ')')
+      $(".natural span:first-child").html('(NATURAL' + currentYear );
+      $(".synthetic span:first-child").html('(SYNTHETIC' + currentYear + ')');
+      $(".methadone span:first-child").html('(METHADONE ' + currentYear + ')');
+      $(".heroin span:first-child").html('(HEROIN' + currentYear + ')');
+      
+      
+    
+      $(".year span:last-child").html(Number(props['YEAR' + currentYear]).toLocaleString());
+      $(".natural span:last-child").html(Number(props['NATURAL ' + currentYear]).toLocaleString());
+      $(".synthetic span:last-child").html(Number(props['SYNTHETIC ' + currentYear]).toLocaleString());
+      $(".methadone span:last-child").html(Number(props['SYNTHETIC ' + currentYear]).toLocaleString());
+      $(".heroin span:last-child").html(Number(props['HEROIN' + currentYear]).toLocaleString());
+     
+      
+      
       
       
       // raise opacity level as visual affordance
