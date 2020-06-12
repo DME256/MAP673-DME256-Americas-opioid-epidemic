@@ -27,7 +27,7 @@
   omnivore.csv('data/opioid_deaths_new.csv')
     .on('ready', function (e) {
       drawMap(e.target.toGeoJSON());
-      drawLegend(e.target.toGeoJSON()); // add this statement
+      // drawLegend(e.target.toGeoJSON()); // add this statement
     })
      .on('error', function (e) {
        console.log(e.error[0].message);
@@ -299,11 +299,11 @@
 
       // // // populate HTML elements with relevant info
       $('#info span').html(props.STATE);
-      $(".year span:first-child").html('(YEAR ' + currentYear + ')')
+      $(".year span:first-child").html('(YEAR ' + currentYear + '):')
       $(".natural span:first-child").html('NATURAL :');
       $(".synthetic span:first-child").html('SYNTHETIC : ');
       $(".methadone span:first-child").html('METHADONE : ');
-      $(".heroin span:first-child").html('HEROIN ');
+      $(".heroin span:first-child").html('HEROIN : ');
               
       $(".year span:last-child").html(Number(props['YEAR' + currentYear]).toLocaleString());
       $(".natural span:last-child").html(Number(props['NATURAL ' + currentYear]).toLocaleString());
