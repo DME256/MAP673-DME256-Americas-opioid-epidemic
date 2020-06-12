@@ -2,9 +2,9 @@
 
   const map = L.map('map', {
     center: [39.8283, -98.5795],
-      zoom: 4,
+      zoom: 4.5,
       minZoom: 4,
-      maxZoom: 6,
+      maxZoom: 8,
       scrollWheelZoom: true,
       zoomSnap: .1,
       dragging: true,
@@ -299,11 +299,11 @@
 
       // // // populate HTML elements with relevant info
       $('#info span').html(props.STATE);
-      $(".year span:first-child").html('(YEAR' + currentYear + ')')
-      $(".natural span:first-child").html('(NATURAL' + currentYear );
-      $(".synthetic span:first-child").html('(SYNTHETIC' + currentYear + ')');
-      $(".methadone span:first-child").html('(METHADONE ' + currentYear + ')');
-      $(".heroin span:first-child").html('(HEROIN' + currentYear + ')');
+      $(".year span:first-child").html('(YEAR ' + currentYear + ')')
+      $(".natural span:first-child").html('NATURAL :');
+      $(".synthetic span:first-child").html('SYNTHETIC : ');
+      $(".methadone span:first-child").html('METHADONE : ');
+      $(".heroin span:first-child").html('HEROIN ');
               
       $(".year span:last-child").html(Number(props['YEAR' + currentYear]).toLocaleString());
       $(".natural span:last-child").html(Number(props['NATURAL ' + currentYear]).toLocaleString());
@@ -321,12 +321,12 @@
       });
 
       // empty arrays for opioid death values
-      const heroinValues = [],
-        methadoneValues = [],
-        naturalValues = [],
-        syntheticValues = [];
-        
-        
+      const naturalValues = [],
+      syntheticValues = [],
+      methadoneValues = [],
+      heroinValues = [];
+           
+       
 
       // loop through the year levels and push values into those arrays
       for (let i = 2006; i <= 2018; i++) {
