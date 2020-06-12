@@ -229,9 +229,9 @@
       $(".heroin span:first-child").html('HEROIN : ');
               
       $(".year span:last-child").html(Number(props['YEAR' + currentYear]).toLocaleString());
-      $(".natural span:last-child").html(Number(props['NATURAL ' + currentYear]).toLocaleString());
-      $(".synthetic span:last-child").html(Number(props['SYNTHETIC ' + currentYear]).toLocaleString());
-      $(".methadone span:last-child").html(Number(props['SYNTHETIC ' + currentYear]).toLocaleString());
+      $(".natural span:last-child").html(Number(props['NATURAL' + currentYear]).toLocaleString());
+      $(".synthetic span:last-child").html(Number(props['SYNTHETIC' + currentYear]).toLocaleString());
+      $(".methadone span:last-child").html(Number(props['SYNTHETIC' + currentYear]).toLocaleString());
       $(".heroin span:last-child").html(Number(props['HEROIN' + currentYear]).toLocaleString());
      
       
