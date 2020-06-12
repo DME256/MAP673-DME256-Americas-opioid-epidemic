@@ -18,34 +18,40 @@
       <div class='flex-parent flex-parent--column viewport-third h-full-ml hmax-full bg-white py18 px12'>
         <div class='flex-child flex-child--grow px12 py12 scroll-auto'>
           <!-- <img class="max-image-width" src="graphics/" title="Kg " height="120" -->
-            <!-- width="180"> -->
+          <!-- width="180"> -->
           <h1 class='txt-h1 mb6'>America's Opioid Epidemic</h1>
           <h3 class='txt-h3'> The Three Waves of Opioid Overdose Deaths</h3>
-            
-            The first wave began with increased prescribing of opioids in the mid 2000's, with overdose deaths involving prescription opioids 
-            (natural and semi-synthetic opioids and methadone) increasing since at least 1999.
-            The second wave began in 2010, with rapid increases in overdose deaths involving heroin.
-            The third wave began in 2013, with significant increases in overdose deaths involving synthetic opioids, 
-            particularly those involving illicitly manufactured fentanyl. The market for illicitly manufactured fentanyl continues to change, 
-            and it can be found in combination with heroin, counterfeit pills, and cocaine.<br>
 
-            <b>Opiod are classified into 4 categories:</b>
-            
-            <li>Natural- Prescription drugs (e.g.  oxycodone, hydrocodone).</li> 
-            <li>Synthetic- Psychoactive substances (NPS) that are either known to be opiates or have opiate-like effects.
-              These are not naturally occurring substances(e.g. fentanyl, tramadol).</li>
-            <li>Methadone- Used for pain relief and treatment of drug addiction.</li>
-            <li>Heroin- Illicit drug, opium and morphine is made from the resin of poppy plants.</li> 
-                                 
-                                
-          
+          The first wave began with increased prescribing of opioids in the mid 2000's, with overdose deaths involving
+          prescription opioids
+          (natural and semi-synthetic opioids and methadone) increasing since at least 1999.
+          The second wave began in 2010, with rapid increases in overdose deaths involving heroin.
+          The third wave began in 2013, with significant increases in overdose deaths involving synthetic opioids,
+          particularly those involving illicitly manufactured fentanyl. The market for illicitly manufactured fentanyl
+          continues to change,
+          and it can be found in combination with heroin, counterfeit pills, and cocaine.<br>
+
+          <b>Opiod are classified into 4 categories:</b>
+
+          <li>Natural- Prescription drugs (e.g. oxycodone, hydrocodone).</li>
+          <li>Synthetic- Psychoactive substances (NPS) that are either known to be opiates or have opiate-like effects.
+            These are not naturally occurring substances(e.g. fentanyl, tramadol).</li>
+          <li>Methadone- Used for pain relief and treatment of drug addiction.</li>
+          <li>Heroin- Illicit drug, opium and morphine is made from the resin of poppy plants.</li>
+
+
+
           </p>
-            <!-- <img class="max-image-width" src="" title=" xx" height="150" -->
-            <!-- width="280"> -->
+          <!-- <img class="max-image-width" src="" title=" xx" height="150" -->
+          <!-- width="280"> -->
           <h2 class='txt-xl mt18 mb12'>Map Info</h2>
           <p>The data comes Kaiser Family Foundation(KFF)</p>
-          <a class='link' href="https://www.kff.org/other/state-indicator/opioid-overdose-death-rates/?currentTimeframe=0&selectedDistributions=opioid-overdose-death-rate-age-adjusted&sortModel=%7B%22colId%22:%22Location%22,%22sort%22:%22asc%22%7D">Opiod Death Rates</a> <br>
-          <a class='link' href="https://www.kff.org/other/state-indicator/opioid-overdose-deaths-by-type-of-opioid/?currentTimeframe=0&sortModel=%7B%22colId%22:%22Location%22,%22sort%22:%22asc%22%7D">Death Rate by Type of Opioid</a>
+          <a class='link'
+            href="https://www.kff.org/other/state-indicator/opioid-overdose-death-rates/?currentTimeframe=0&selectedDistributions=opioid-overdose-death-rate-age-adjusted&sortModel=%7B%22colId%22:%22Location%22,%22sort%22:%22asc%22%7D">Opiod
+            Death Rates</a> <br>
+          <a class='link'
+            href="https://www.kff.org/other/state-indicator/opioid-overdose-deaths-by-type-of-opioid/?currentTimeframe=0&sortModel=%7B%22colId%22:%22Location%22,%22sort%22:%22asc%22%7D">Death
+            Rate by Type of Opioid</a>
         </div>
         <footer class='px12 py12 bg-gray-faint txt-s'>
           <ul>
@@ -63,12 +69,12 @@
     </div>
     <div class='flex-child flex-child--grow viewport-twothirds viewport-full-ml'>
       <div id="map" class='viewport-twothirds viewport-full-ml'></div>
-      
+
     </div>
   </div>
 
 
-  
+
   <!-- year -->
     <div id='year' class='pt6 px12 bg-white border border--gray-light round'>
           <p class='txt-bold'>Year: <span>2006</span></p>
@@ -79,85 +85,58 @@
     <input type='range' min="2006" , max="2018" , value="2006" , step="1" class="currentYear" />
   </div>
 
-  
+
 
   <!-- legend -->
   <div id='legend' class='bg-white round px1 py1 relative'>
+
+
     <!--
       Wrap legend in div that doesn't display when the screen width <= 800px
       Displays as a block when >= 800px
      -->
-     <div class='none block-ml'> 
-       
-       <!-- <h3 class='txt-bold mb12 w180'>Number of <span class="NATURAL"></span>   <span class="Synthetic"></span> -->
-        <!-- deaths by opioid type</h3> -->
+    <div class='none block-ml'>
 
-     <div class='legend-circles relative w180'> 
+      <!-- <h3 class='txt-bold mb12 w180'>Number of <span class="NATURAL"></span>   <span class="Synthetic"></span> -->
+      <!-- deaths by opioid type</h3> -->
+
+      <div class='legend-circles relative w180'>
         <div class="legend-large border border--gray-light absolute"></div>
         <div class="legend-small border border--gray-light absolute"></div>
         <div class="legend-large-label txt-m absolute"></div>
         <div class="legend-small-label txt-m absolute"></div>
       </div>
-    <!-- </div>  -->
-    <!--
-      Add a button that doesn't display when the screen width >=800px
-      When it does display, show it at the bottom right of the parent div
-      Need to attach event listener on button in JS to do something on click
-    -->
-    <!-- <button class='none-ml bg-white round absolute right bottom'> -->
-      <!--
-        Add a SVG icon with height, width, color, and position it with negative bottom margin
-        https://labs.mapbox.com/assembly/documentation/#Icons
-      -->
-      <!-- <svg class='icon h48 w48 natural mb-neg36'> -->
-        <!-- Select the icon shape -->
-        <!-- <use xlink:href=#icon-circle></use> -->
-      <!-- </svg> -->
-      <!-- Add a second SVG icon with height, width, and color -->
-      <!-- <svg class='icon h36 w36 heroin'> -->
-        <!-- Select the icon shape -->
-        <!-- <use xlink:href=#icon-circle></use> -->
-      <!-- </svg> -->
-      <!-- <svg class='icon h36 w36 methadone'> -->
-        <!-- Select the icon shape -->
-        <!-- <use xlink:href=#icon-circle></use> -->
-      <!-- </svg> -->
-      <!-- <svg class='icon h36 w36 synthetic'> -->
-        <!-- Select the icon shape -->
-        <!-- <use xlink:href=#icon-circle></use> -->
-      <!-- </svg> -->
-    <!-- </button> -->
-  <!-- </div> -->
 
-  <!-- info -->
-  
-  <div id='info' class='py6 px12 bg-white border border--gray-light round fixed w280'>
-    <p>State: <span class='txt-l txt-bold'></span></p>
-    <p class='year'>Death/1000 <span></span> <span class='txt-l txt-bold'></span></p>
-    <p class='natural'><span></span> <span class='txt-l txt-bold'></span></p>
-    <p class='synthetic'><span></span> <span class='txt-l txt-bold'></span></p>
-    <p class='methadone'><span></span> <span class='txt-l txt-bold'></span></p>
-    <p class='heroin'><span></span> <span class='txt-l txt-bold'></span></p>
 
-  <div id='info'></div>
-    
-  <!-- Additional elements added here for this step! -->
-  <hr class='txt-hr'>
-  <p class='my12'>Trend: Years 2006 &ndash; 2018</p>
-  
-  <p class='mb12 '><span class='yearspark'></span></p>
-  <p><span class='naturalspark'></span></p>
-  <p><span class='syntheticspark'></span></p>
-  <p><span class='methadonespark'></span></p>
-  <p><span class='heroinspark'></span></p>
-  </div>
+      <!-- info -->
 
-  <script async defer src="https://api.mapbox.com/mapbox-assembly/v0.24.0/assembly.js"></script>
-  <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
-  <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-omnivore/v0.3.1/leaflet-omnivore.min.js'></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-sparklines/2.1.2/jquery.sparkline.min.js"></script>
-  <script src='js/app.js'></script>
+      <div id='info' class='py6 px12 bg-white border border--gray-light round fixed w280'>
+        <p>State: <span class='txt-l txt-bold'></span></p>
+        <p class='year'>Death/1000 <span></span> <span class='txt-l txt-bold'></span></p>
+        <p class='natural'><span></span> <span class='txt-l txt-bold'></span></p>
+        <p class='synthetic'><span></span> <span class='txt-l txt-bold'></span></p>
+        <p class='methadone'><span></span> <span class='txt-l txt-bold'></span></p>
+        <p class='heroin'><span></span> <span class='txt-l txt-bold'></span></p>
+
+        <div id='info'></div>
+
+        <!-- Additional elements added here for this step! -->
+        <hr class='txt-hr'>
+        <p class='my12'>Trend: Years 2006 &ndash; 2018</p>
+
+        <p class='mb12 '><span class='yearspark'></span></p>
+        <p><span class='naturalspark'></span></p>
+        <p><span class='syntheticspark'></span></p>
+        <p><span class='methadonespark'></span></p>
+        <p><span class='heroinspark'></span></p>
+      </div>
+
+      <script async defer src="https://api.mapbox.com/mapbox-assembly/v0.24.0/assembly.js"></script>
+      <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+      <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-omnivore/v0.3.1/leaflet-omnivore.min.js'></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-sparklines/2.1.2/jquery.sparkline.min.js"></script>
+      <script src='js/app.js'></script>
 
 </body>
 
