@@ -94,7 +94,7 @@
   function calcRadius(val) {
 
     var radius = Math.sqrt(val / Math.PI);
-    return radius * 1.5; // adjust .5 as a scale factor
+    return radius * 2.5; // adjust .5 as a scale factor
 
   } // end calcRadius()
 
