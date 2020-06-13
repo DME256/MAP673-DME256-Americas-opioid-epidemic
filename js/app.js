@@ -2,7 +2,7 @@
 
   const map = L.map('map', {
     center: [39.8283, -98.5795],
-      zoom: 4.5,
+      zoom: 4.75,
       minZoom: 4,
       maxZoom: 8,
       scrollWheelZoom: true,
@@ -73,6 +73,7 @@
     });
 
     const sourceLayers = {
+      
 		 "<b style='color:#BCA9F5'>Natural Opiods</b>": naturalLayer,
 			"<b style='color:#58FAF4'>Synthetic Opiods</b>": syntheticLayer,
       "<b style='color:#D96D02'>Methadone</b>": methadoneLayer,
@@ -231,7 +232,7 @@
       $(".year span:last-child").html(Number(props['YEAR' + currentYear]).toLocaleString());
       $(".natural span:last-child").html(Number(props['NATURAL' + currentYear]).toLocaleString());
       $(".synthetic span:last-child").html(Number(props['SYNTHETIC' + currentYear]).toLocaleString());
-      $(".methadone span:last-child").html(Number(props['SYNTHETIC' + currentYear]).toLocaleString());
+      $(".methadone span:last-child").html(Number(props['METHADONE' + currentYear]).toLocaleString());
       $(".heroin span:last-child").html(Number(props['HEROIN' + currentYear]).toLocaleString());
      
       
