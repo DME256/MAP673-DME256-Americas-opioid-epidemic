@@ -74,7 +74,7 @@
 
     const sourceLayers = {
       
-		 "<b style='color:#BCA9F5'>Natural Opiods</b>": naturalLayer,
+		  "<b style='color:#BCA9F5'>Natural Opiods</b>": naturalLayer,
 			"<b style='color:#58FAF4'>Synthetic Opiods</b>": syntheticLayer,
       "<b style='color:#D96D02'>Methadone</b>": methadoneLayer,
       "<b style='color:#FF0000'>Heroin</b>": heroinLayer
@@ -82,7 +82,8 @@
 		}
 
 		L.control.layers(null, sourceLayers, {
-			collapsed: false
+      collapsed: true,
+      color: '#FF0000'
 
 		}).addTo(map);
     // pass the correct argument for current year
