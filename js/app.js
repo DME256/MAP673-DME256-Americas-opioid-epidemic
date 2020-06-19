@@ -221,6 +221,7 @@
 
       // access properties of target layer
       const props = e.layer.feature.properties;
+      activeLayer = e.layer
 
       // // // populate HTML elements with relevant info
       $('#info span').html(props.STATE);
@@ -236,10 +237,7 @@
       $(".methadone span:last-child").html(Number(props['METHADONE' + currentYear]).toLocaleString());
       $(".heroin span:last-child").html(Number(props['HEROIN' + currentYear]).toLocaleString());
      
-      
-      
-      
-      
+ 
       // raise opacity level as visual affordance
       e.layer.setStyle({
         fillOpacity: .6
@@ -324,11 +322,10 @@
       // Check document size, if less than 800...
       if ($(document).width() < 800) {
 
-        info.show()
         // ...position the info window in the upper-right corner.
         info.css({
           "right": 10,
-          "top": 45,
+          "top": 55,
         });
 
       } else {
@@ -354,7 +351,7 @@
       
     });
 
-  } // end retrieveInfo()
+  }// end retrieveInfo()
 
   function updateYear(currentYear) {
 
