@@ -201,7 +201,6 @@
       return legend;
 
     }
-
     
     legendControl.addTo(map);
 
@@ -212,6 +211,23 @@
     // select the element and reference with variable
     // and hide it from view initially
     const info = $('#info').hide();
+
+    // Test if mobile
+    if (L.Browser.mobile) {
+
+    syntheticLayer.eachLayer(function(layer) {
+      console.log(currentYear,layer.feature.properties)
+      const props = layer.feature.properties;
+      let popup = `<h1>${props.STATE}</h1>
+      ${props['YEAR' + currentYear]}<br>
+        NATURAL: ${props['NATURAL' + currentYear]}<br>
+        SYNTHETIC: ${props['SYNTHETIC' + currentYear]}<br>
+        METHADONE: ${props['METHADONE' + currentYear]}<br>
+        HEROIN: ${props['HEROIN' + currentYear]}<br>
+      `
+      layer.bindPopup(popup)
+    })
+    } else {
 
     // since naturalLayer is on top, use to detect mouseover events
     syntheticLayer.on('mouseover', function (e) {
@@ -236,10 +252,7 @@
       $(".methadone span:last-child").html(Number(props['METHADONE' + currentYear]).toLocaleString());
       $(".heroin span:last-child").html(Number(props['HEROIN' + currentYear]).toLocaleString());
      
-      
-      
-      
-      
+ 
       // raise opacity level as visual affordance
       e.layer.setStyle({
         fillOpacity: .6
@@ -327,7 +340,7 @@
         // ...position the info window in the upper-right corner.
         info.css({
           "right": 10,
-          "top": 45,
+          "top": 55,
         });
 
       } else {
@@ -350,9 +363,10 @@
           });
         }
       }
+      
     });
-
-  } // end retrieveInfo()
+  }
+  }// end retrieveInfo()
 
   function updateYear(currentYear) {
 
