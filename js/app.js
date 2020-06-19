@@ -324,6 +324,7 @@
       // Check document size, if less than 800...
       if ($(document).width() < 800) {
 
+        info.show()
         // ...position the info window in the upper-right corner.
         info.css({
           "right": 10,
@@ -350,6 +351,7 @@
           });
         }
       }
+      
     });
 
   } // end retrieveInfo()
