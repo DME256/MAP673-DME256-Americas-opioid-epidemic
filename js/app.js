@@ -11,7 +11,6 @@
       zoomControl: true
   });
   
-
   const accessToken = 'pk.eyJ1IjoiZG1lMjU2IiwiYSI6ImNrMDh5ajZhaTAzOHEzb293NGl1dGJyMDYifQ.ulN1IYya6BL917CGdf5OIA'
 
   L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=' + accessToken, {
@@ -21,9 +20,7 @@
     accessToken: accessToken
   }).addTo(map);
 
-  
-
-  // use omnivore to load the CSV data
+ // use omnivore to load the CSV data
   omnivore.csv('data/opioid_deaths_new.csv')
     .on('ready', function (e) {
       drawMap(e.target.toGeoJSON());
@@ -201,8 +198,7 @@
       return legend;
 
     }
-
-    
+  
     legendControl.addTo(map);
 
   } // end drawLegend()
@@ -236,11 +232,7 @@
       $(".methadone span:last-child").html(Number(props['METHADONE' + currentYear]).toLocaleString());
       $(".heroin span:last-child").html(Number(props['HEROIN' + currentYear]).toLocaleString());
      
-      
-      
-      
-      
-      // raise opacity level as visual affordance
+     // raise opacity level as visual affordance
       e.layer.setStyle({
         fillOpacity: .6
       });
@@ -251,8 +243,6 @@
       methadoneValues = [],
       heroinValues = [];
            
-       
-
       // loop through the year levels and push values into those arrays
       for (let i = 2006; i <= 2018; i++) {
         naturalValues.push(props['NATURAL' + i]);
@@ -261,7 +251,6 @@
         heroinValues.push(props['HEROIN' + i]);
                
       }
-
       
       $('.naturalspark').sparkline(naturalValues, {
         width: '200px',
