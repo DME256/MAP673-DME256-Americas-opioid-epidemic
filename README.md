@@ -1,9 +1,9 @@
-# americas-opioid-epidemic
+# America's Opioid Epidemic
 ## Analysis of opioid related deaths by US state from 2006-2018.
 ## The map will display opioid death by type of opioid that resulted in death.
 ### Data from Kaiser Family Foundation (KFF).
 
-### map uses Mapbox raster files in Leaflet and omnivore to load data. QGIS was used to merge data from KFF website. 
+### Map uses Mapbox raster files in Leaflet and omnivore to load data. QGIS was used to merge data from KFF website. 
 
 ### The objective of the map will be to demonstrate over time the growth and scope of opioid addiction, and the fatal results it has for our country. The analysis will be at a state level to demonstrating the year over year statistics. The user will be able to use slider to change that data by year to see the differences in amount of prescriptions or scripts written by county in the US. In addition, the map will demonstrate by the using the type of opioid responsible for fatal overdose numbers, the result of increased regulation of prescription opioids efforts. 
 
