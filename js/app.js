@@ -209,6 +209,23 @@
     // and hide it from view initially
     const info = $('#info').hide();
 
+        // Test if mobile
+        if (L.Browser.mobile) {
+
+          syntheticLayer.eachLayer(function(layer) {
+            console.log(currentYear,layer.feature.properties)
+            const props = layer.feature.properties;
+            let popup = `<h1>${props.STATE}</h1>
+            ${props['YEAR' + currentYear]}<br>
+              NATURAL: ${props['NATURAL' + currentYear]}<br>
+              SYNTHETIC: ${props['SYNTHETIC' + currentYear]}<br>
+              METHADONE: ${props['METHADONE' + currentYear]}<br>
+              HEROIN: ${props['HEROIN' + currentYear]}<br>
+            `
+            layer.bindPopup(popup)
+          })
+          } else {
+
     // since naturalLayer is on top, use to detect mouseover events
     syntheticLayer.on('mouseover', function (e) {
 
@@ -217,6 +234,7 @@
 
       // access properties of target layer
       const props = e.layer.feature.properties;
+      activeLayer =e.Layer
 
       // // // populate HTML elements with relevant info
       $('#info span').html(props.STATE);
@@ -340,6 +358,7 @@
         }
       }
     });
+  }
 
   } // end retrieveInfo()
 
