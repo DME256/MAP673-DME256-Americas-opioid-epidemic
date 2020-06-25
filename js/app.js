@@ -19,6 +19,7 @@
     id: 'mapbox.dark',
     accessToken: accessToken
   }).addTo(map);
+  
 
  // use omnivore to load the CSV data
   omnivore.csv('data/opioid_deaths_new.csv')
@@ -72,14 +73,14 @@
     const sourceLayers = {
       
 		  "<b style='color:#BCA9F5'>Natural Opiods</b>": naturalLayer,
-			"<b style='color:#58FAF4'>Synthetic Opiods</b>": syntheticLayer,
-      "<b style='color:#D96D02'>Methadone</b>": methadoneLayer,
-      "<b style='color:#FF0000'>Heroin</b>": heroinLayer
+			"<b style='color:#D96D02'>Methadone</b>": methadoneLayer,
+      "<b style='color:#FF0000'>Heroin</b>": heroinLayer,
+      "<b style='color:#58FAF4'>Synthetic Opiods</b>": syntheticLayer
 
 		}
 
 		L.control.layers(null, sourceLayers, {
-      collapsed: true,
+      collapsed: false,
       color: '#FF0000'
 
 		}).addTo(map);
